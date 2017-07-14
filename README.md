@@ -8,3 +8,9 @@ ___
 ```
 npm install
 ```
+
+Compile
+___
+```
+npm run compile
+```
