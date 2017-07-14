@@ -19,6 +19,8 @@
     "express": "^4.15.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-radio-group": "^3.0.2",
+    "react-slider": "^0.8.0",
     "webpack": "^3.2.0",
     "webpack-dev-middleware": "^1.11.0"
   }
