@@ -4,7 +4,9 @@ body {
 .slider {
     height: 380px;
     width: 50px;
-    border: 1px solid grey;
+    background-image: url("../Elodea-slider.png");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .handle {
     font-size: 0.9em;
