@@ -22524,7 +22524,7 @@ var Application = function (_React$Component) {
             maxRate = _this2.state.co2,
             rate = Math.min(maxRate, _this2.state.intensity * colorMultiplier);
 
-        _this2.setState({ bubbles: rate * 10 });
+        _this2.setState({ bubbles: Math.round(rate * 10) });
       };
 
       return _react2.default.createElement(
@@ -22572,7 +22572,7 @@ var Application = function (_React$Component) {
           'Submit'
         ),
         _react2.default.createElement('br', null),
-        'Bubbles: ',
+        'Bubble: ',
         this.state.bubbles
       );
     }
