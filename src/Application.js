@@ -1,3 +1,5 @@
+require('../assets/css/Application.css');
+
 import React from 'react';
 import ReactSlider from 'react-slider';
 import {RadioGroup, Radio} from 'react-radio-group';
