@@ -30,11 +30,10 @@ module.exports = {
         test: /\.(jpg|png|svg)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
-              query: {
-                name:'assets/[name].[ext]'
-              }
+              limit: 25000,
+              name:'assets/[name].[ext]'
             }
           },
           {
