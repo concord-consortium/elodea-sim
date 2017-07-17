@@ -151,21 +151,27 @@ class Application extends React.Component {
           <Radio value="red" />Red
           <Radio value="green" />Green
         </RadioGroup>
-        <ReactSlider orientation="vertical" defaultValue={this.state.co2} onChange={handleCO2Slider} step={.1} max={maxCO2}>
-          <div>{this.state.co2}</div>
-        </ReactSlider>
-        CO2 Value
-        <br/>
-        <br/>
-        <ReactSlider orientation="vertical" defaultValue={this.state.intensity} onChange={handleIntensitySlider} step={.1} max={maxIntensity}>
-          <div>{this.state.intensity}</div>
-        </ReactSlider>
-        Intensity Value
+        <div className="sliders">
+          <div className="labeled-slider">
+            <ReactSlider orientation="vertical" defaultValue={this.state.co2} onChange={handleCO2Slider} step={.1} max={maxCO2}>
+              <div>{this.state.co2}</div>
+            </ReactSlider>
+            CO2 Value
+          </div>
+          <br/>
+          <br/>
+          <div className="labeled-slider">
+            <ReactSlider orientation="vertical" defaultValue={this.state.intensity} onChange={handleIntensitySlider} step={.1} max={maxIntensity}>
+              <div>{this.state.intensity}</div>
+            </ReactSlider>
+            Intensity Value
+          </div>
+        </div>
         <br/>
         <br/>
         <button onClick={handleSubmit}>Submit</button>
         <br/>
-        Bubble: {this.state.bubbles}
+        Bubbles: {this.state.bubbles}
       </div>
     );
   }
