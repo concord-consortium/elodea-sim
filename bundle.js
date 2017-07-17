@@ -22519,6 +22519,21 @@ var Application = function (_React$Component) {
       bubbles: null
     };
 
+    var requestDataContext = function requestDataContext(name) {
+      return codapInterface.sendRequest({
+        action: 'get',
+        resource: 'dataContext[' + name + ']'
+      });
+    };
+    var requestCreateDataSet = function requestCreateDataSet(name, template) {
+      var dataSetDef = Object.assign({}, template);
+      dataSetDef.name = name;
+      return codapInterface.sendRequest({
+        action: 'create',
+        resource: 'dataContext',
+        values: dataSetDef
+      });
+    };
     codapInterface.init({
       name: kDataSetName,
       title: kAppName,
@@ -22560,25 +22575,6 @@ var Application = function (_React$Component) {
         _this2.setState({ color: newVal });
       };
 
-      var getRequestedSampleCount = function getRequestedSampleCount() {
-        var tHowMany = document.forms.form1.howMany.value.trim();
-        return Number(tHowMany);
-      };
-      var requestDataContext = function requestDataContext(name) {
-        return codapInterface.sendRequest({
-          action: 'get',
-          resource: 'dataContext[' + name + ']'
-        });
-      };
-      var requestCreateDataSet = function requestCreateDataSet(name, template) {
-        var dataSetDef = Object.assign({}, template);
-        dataSetDef.name = name;
-        return codapInterface.sendRequest({
-          action: 'create',
-          resource: 'dataContext',
-          values: dataSetDef
-        });
-      };
       var guaranteeCaseTable = function guaranteeCaseTable() {
         return new Promise(function (resolve, reject) {
           codapInterface.sendRequest({
