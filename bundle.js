@@ -22505,15 +22505,22 @@ var Application = function (_React$Component) {
       bubbles: null
     };
     codapHelper.initSim({
-      name: 'Number of Bubbles',
-      dimensions: { width: 1200, height: 1600 },
-      collections: [{
-        name: 'bubbles',
+      name: 'Random Numbers',
+      dimensions: { width: 300, height: 150 },
+      collections: [// There are two collections: a parent and a child
+      {
+        name: 'samples',
+        // The parent collection has just one attribute
+        attrs: [{ name: "sample", type: 'categorical' }],
+        childAttrName: "sample"
+      }, {
+        name: 'numbers',
         labels: {
-          pluralCase: "bubbles",
+          pluralCase: "numbers",
           setOfCasesWithArticle: "a sample"
         },
-        attrs: [{ name: "bubbles", type: 'numeric', precision: 1 }]
+        // The child collection also has just one attribute
+        attrs: [{ name: "number", type: 'numeric', precision: 1 }]
       }]
     });
     return _this;
