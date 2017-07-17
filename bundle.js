@@ -22495,7 +22495,7 @@ var minCO2 = 0,
       pluralCase: "bubbles",
       setOfCasesWithArticle: "a sample"
     },
-    attrs: [{ name: "bubbles", type: 'numeric', precision: 1 }, { name: "intensity", type: 'numeric', precision: 2 }]
+    attrs: [{ name: "color", type: 'categorical' }, { name: "CO2", type: 'numeric', precision: 2 }, { name: "intensity", type: 'numeric', precision: 2 }, { name: "bubbles", type: 'numeric', precision: 1 }]
   }]
 };
 
@@ -22617,7 +22617,7 @@ var Application = function (_React$Component) {
 
         _this2.setState({ bubbles: bubbles });
 
-        sendItems(kDataSetName, { bubbles: bubbles, intensity: _this2.state.intensity });
+        sendItems(kDataSetName, { bubbles: bubbles, color: _this2.state.color, CO2: _this2.state.co2, intensity: _this2.state.intensity });
         guaranteeCaseTable();
       };
 
