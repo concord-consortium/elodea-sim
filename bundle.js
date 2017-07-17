@@ -22615,9 +22615,9 @@ var Application = function (_React$Component) {
             rate = Math.min(maxRate, _this2.state.intensity * colorMultiplier),
             bubbles = Math.round(rate * 10);
 
-        _this2.setState({ bubbles: bubbles, intensity: _this2.state.intensity });
+        _this2.setState({ bubbles: bubbles });
 
-        sendItems(kDataSetName, { bubbles: bubbles });
+        sendItems(kDataSetName, { bubbles: bubbles, intensity: _this2.state.intensity });
         guaranteeCaseTable();
       };
 
