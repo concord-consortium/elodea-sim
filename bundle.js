@@ -22495,7 +22495,7 @@ var minCO2 = 0,
       pluralCase: "bubbles",
       setOfCasesWithArticle: "a sample"
     },
-    attrs: [{ name: "bubbles", type: 'numeric', precision: 1 }]
+    attrs: [{ name: "bubbles", type: 'numeric', precision: 1 }, { name: "intensity", type: 'numeric', precision: 2 }]
   }]
 };
 
@@ -22615,9 +22615,10 @@ var Application = function (_React$Component) {
             rate = Math.min(maxRate, _this2.state.intensity * colorMultiplier),
             bubbles = Math.round(rate * 10);
 
-        _this2.setState({ bubbles: bubbles });
+        _this2.setState({ bubbles: bubbles, intensity: _this2.state.intensity });
 
         sendItems(kDataSetName, { bubbles: bubbles });
+        guaranteeCaseTable();
       };
 
       return _react2.default.createElement(
