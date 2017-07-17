@@ -22498,6 +22498,7 @@ var Application = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this));
 
+    initSim();
     _this.state = {
       co2: (maxCO2 - minCO2) / 2,
       intensity: (maxIntensity - minIntensity) / 2,
@@ -22508,6 +22509,22 @@ var Application = function (_React$Component) {
   }
 
   _createClass(Application, [{
+    key: 'initSim',
+    value: function initSim() {
+      codapHelper.initSim({
+        name: 'Number of Bubbles',
+        dimensions: { width: 1200, height: 1600 },
+        collections: [{
+          name: 'bubbles',
+          labels: {
+            pluralCase: "bubbles",
+            setOfCasesWithArticle: "a sample"
+          },
+          attrs: [{ name: "bubbles", type: 'numeric', precision: 1 }]
+        }]
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -22524,9 +22541,11 @@ var Application = function (_React$Component) {
       var handleSubmit = function handleSubmit() {
         var colorMultiplier = colorMultipliers[_this2.state.color],
             maxRate = _this2.state.co2,
-            rate = Math.min(maxRate, _this2.state.intensity * colorMultiplier);
+            rate = Math.min(maxRate, _this2.state.intensity * colorMultiplier),
+            bubbles = Math.round(rate * 10);
 
-        _this2.setState({ bubbles: Math.round(rate * 10) });
+        _this2.setState({ bubbles: bubbles });
+        codapHelper.createCase('bubbles', bubbles);
       };
 
       return _react2.default.createElement(
