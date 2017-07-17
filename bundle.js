@@ -22498,33 +22498,28 @@ var Application = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this));
 
-    initSim();
     _this.state = {
       co2: (maxCO2 - minCO2) / 2,
       intensity: (maxIntensity - minIntensity) / 2,
       color: "white",
       bubbles: null
     };
+    codapHelper.initSim({
+      name: 'Number of Bubbles',
+      dimensions: { width: 1200, height: 1600 },
+      collections: [{
+        name: 'bubbles',
+        labels: {
+          pluralCase: "bubbles",
+          setOfCasesWithArticle: "a sample"
+        },
+        attrs: [{ name: "bubbles", type: 'numeric', precision: 1 }]
+      }]
+    });
     return _this;
   }
 
   _createClass(Application, [{
-    key: 'initSim',
-    value: function initSim() {
-      codapHelper.initSim({
-        name: 'Number of Bubbles',
-        dimensions: { width: 1200, height: 1600 },
-        collections: [{
-          name: 'bubbles',
-          labels: {
-            pluralCase: "bubbles",
-            setOfCasesWithArticle: "a sample"
-          },
-          attrs: [{ name: "bubbles", type: 'numeric', precision: 1 }]
-        }]
-      });
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
