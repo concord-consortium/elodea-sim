@@ -22484,7 +22484,20 @@ var minCO2 = 0,
     maxCO2 = 10,
     minIntensity = 0,
     maxIntensity = 10,
-    colorMultipliers = { blue: 1, red: .5, green: 0, white: 1.5 };
+    colorMultipliers = { blue: 1, red: .5, green: 0, white: 1.5 },
+    kDataSetName = 'Bubbles',
+    kAppName = "Bubbles",
+    kDataSetTemplate = {
+  name: "{name}",
+  collections: [{
+    name: 'bubbles',
+    labels: {
+      pluralCase: "bubbles",
+      setOfCasesWithArticle: "a sample"
+    },
+    attrs: [{ name: "bubbles", type: 'numeric', precision: 1 }]
+  }]
+};
 
 /**
  * A counter button: tap the button to increase the count.
@@ -22504,24 +22517,29 @@ var Application = function (_React$Component) {
       color: "white",
       bubbles: null
     };
-    codapHelper.initSim({
-      name: 'Random Numbers',
-      dimensions: { width: 300, height: 150 },
-      collections: [// There are two collections: a parent and a child
-      {
-        name: 'samples',
-        // The parent collection has just one attribute
-        attrs: [{ name: "sample", type: 'categorical' }],
-        childAttrName: "sample"
-      }, {
-        name: 'numbers',
-        labels: {
-          pluralCase: "numbers",
-          setOfCasesWithArticle: "a sample"
-        },
-        // The child collection also has just one attribute
-        attrs: [{ name: "number", type: 'numeric', precision: 1 }]
-      }]
+
+    codapInterface.init({
+      name: kDataSetName,
+      title: kAppName,
+      dimensions: { width: 1200, height: 1600 },
+      version: '0.1'
+    }).then(function (iResult) {
+      // get interactive state so we can save the sample set index.
+      myState = codapInterface.getInteractiveState();
+      // Determine if CODAP already has the Data Context we need.
+      return requestDataContext(kDataSetName);
+    }).then(function (iResult) {
+      // if we did not find a data set, make one
+      if (iResult && !iResult.success) {
+        // If not not found, create it.
+        return requestCreateDataSet(kDataSetName, kDataSetTemplate);
+      } else {
+        // else we are fine as we are, so return a resolved promise.
+        return Promise.resolve(iResult);
+      }
+    }).catch(function (msg) {
+      // handle errors
+      console.log(msg);
     });
     return _this;
   }
