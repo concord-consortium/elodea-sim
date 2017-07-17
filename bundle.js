@@ -22559,6 +22559,60 @@ var Application = function (_React$Component) {
       var handleColorChange = function handleColorChange(newVal) {
         _this2.setState({ color: newVal });
       };
+
+      var getRequestedSampleCount = function getRequestedSampleCount() {
+        var tHowMany = document.forms.form1.howMany.value.trim();
+        return Number(tHowMany);
+      };
+      var requestDataContext = function requestDataContext(name) {
+        return codapInterface.sendRequest({
+          action: 'get',
+          resource: 'dataContext[' + name + ']'
+        });
+      };
+      var requestCreateDataSet = function requestCreateDataSet(name, template) {
+        var dataSetDef = Object.assign({}, template);
+        dataSetDef.name = name;
+        return codapInterface.sendRequest({
+          action: 'create',
+          resource: 'dataContext',
+          values: dataSetDef
+        });
+      };
+      var guaranteeCaseTable = function guaranteeCaseTable() {
+        return new Promise(function (resolve, reject) {
+          codapInterface.sendRequest({
+            action: 'get',
+            resource: 'componentList'
+          }).then(function (iResult) {
+            if (iResult.success) {
+              // look for a case table in the list of components.
+              if (iResult.values && iResult.values.some(function (component) {
+                return component.type === 'caseTable';
+              })) {
+                resolve(iResult);
+              } else {
+                codapInterface.sendRequest({ action: 'create', resource: 'component', values: {
+                    type: 'caseTable',
+                    dataContext: kDataSetName
+                  } }).then(function (result) {
+                  resolve(result);
+                });
+              }
+            } else {
+              reject('api error');
+            }
+          });
+        });
+      };
+      var sendItems = function sendItems(dataSetName, items) {
+        return codapInterface.sendRequest({
+          action: 'create',
+          resource: 'dataContext[' + dataSetName + '].item',
+          values: items
+        });
+      };
+
       var handleSubmit = function handleSubmit() {
         var colorMultiplier = colorMultipliers[_this2.state.color],
             maxRate = _this2.state.co2,
