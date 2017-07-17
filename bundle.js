@@ -22499,6 +22499,7 @@ var minCO2 = 0,
   }]
 };
 
+var myState;
 /**
  * A counter button: tap the button to increase the count.
  */
@@ -22565,7 +22566,8 @@ var Application = function (_React$Component) {
             bubbles = Math.round(rate * 10);
 
         _this2.setState({ bubbles: bubbles });
-        codapHelper.createCase('bubbles', bubbles);
+
+        sendItems(kDataSetName, { bubbles: bubbles });
       };
 
       return _react2.default.createElement(
