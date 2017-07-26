@@ -1,9 +1,9 @@
 require('../assets/css/Application.css');
 
 import React from 'react';
-import ReactSlider from 'react-slider';
 import {RadioGroup, Radio} from 'react-radio-group';
 import Experiment from './Experiment';
+import LabeledSlider from './LabeledSlider';
 
 const minCO2 = 0,
       maxCO2 = 10,
@@ -144,6 +144,7 @@ class Application extends React.Component {
       guaranteeCaseTable();
     }
 
+    let co2Label = <div>CO<sub>2</sub> Level (ppm)</div>;
     return (
       <div className="application-container">
         <div className="column left">
@@ -154,20 +155,10 @@ class Application extends React.Component {
             <Radio value="green" />Green
           </RadioGroup>
           <div className="sliders">
-            <div className="labeled-slider">
-              <ReactSlider orientation="vertical" defaultValue={this.state.co2} onChange={handleCO2Slider} step={.1} max={maxCO2}>
-                <div>{this.state.co2}</div>
-              </ReactSlider>
-              CO2 Value
-            </div>
-            <br/>
-            <br/>
-            <div className="labeled-slider">
-              <ReactSlider orientation="vertical" defaultValue={this.state.intensity} onChange={handleIntensitySlider} step={.1} max={maxIntensity}>
-                <div>{this.state.intensity}</div>
-              </ReactSlider>
-              Intensity Value
-            </div>
+            <LabeledSlider value={this.state.intensity} onUpdateSlider={handleIntensitySlider} label="Light Level (lux)" 
+                           labelImageClass="lux-bulb" maxValue={maxIntensity} />
+            <LabeledSlider value={this.state.co2} onUpdateSlider={handleCO2Slider} label={co2Label} 
+                           labelImageClass="co2-molecule" maxValue={maxCO2} />
           </div>
           <br/>
           <br/>

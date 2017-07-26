@@ -1,0 +1,60 @@
+.labeled-slider {
+  height: 600px;
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.slider {
+  height: 500px;
+  width: 60px;
+  margin-left: -18px;
+  background-image: url("../Elodea-slider.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.handle {
+  font-size: 0.9em;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  background-image: url("../Elodea-slider-button.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 17px;
+}
+.bar {
+  position: relative;
+  background: #ddd;
+}
+.bar.bar-1 {
+  background: #f00;
+}
+.bar.bar-2 {
+  background: #0f0;
+}
+.slider .handle {
+  left: 1px;
+  width: 48px;
+  height: 48px;
+  line-height: 50px;
+}
+.slider .bar {
+  left: 20px;
+  width: 10px;
+}
+.co2-molecule {
+  background-image: url("../co2-molecule.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 63px;
+  height: 53px;
+}
+.lux-bulb {
+  background-image: url("../slider-bulb.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 53px;
+}
