@@ -3,9 +3,6 @@ require('../assets/css/LabeledSlider.css');
 import React, {PropTypes} from 'react';
 import ReactSlider from 'react-slider';
 
-/**
- * A counter button: tap the button to increase the count.
- */
 const LabeledSlider = ({value, maxValue, labelImageClass, label, onUpdateSlider}) => {
   let handleSlide = (newVal) => {
     onUpdateSlider(newVal);
@@ -25,7 +22,7 @@ const LabeledSlider = ({value, maxValue, labelImageClass, label, onUpdateSlider}
 LabeledSlider.propTypes = {
   maxValue: PropTypes.number,
   labelImageClass: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.object,
   onUpdateSlider: PropTypes.func
 }
 

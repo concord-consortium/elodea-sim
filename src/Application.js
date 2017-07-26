@@ -4,6 +4,7 @@ import React from 'react';
 import {RadioGroup, Radio} from 'react-radio-group';
 import Experiment from './Experiment';
 import LabeledSlider from './LabeledSlider';
+import Button from './Button';
 
 const minCO2 = 0,
       maxCO2 = 10,
@@ -33,9 +34,7 @@ const minCO2 = 0,
                          };
 
 var myState;
-/**
- * A counter button: tap the button to increase the count.
- */
+
 class Application extends React.Component {
   constructor() {
     super();
@@ -155,19 +154,19 @@ class Application extends React.Component {
             <Radio value="green" />Green
           </RadioGroup>
           <div className="sliders">
-            <LabeledSlider value={this.state.intensity} onUpdateSlider={handleIntensitySlider} label="Light Level (lux)" 
+            <LabeledSlider value={this.state.intensity} onUpdateSlider={handleIntensitySlider} label={<div>Light Level (lux)</div>}
                            labelImageClass="lux-bulb" maxValue={maxIntensity} />
             <LabeledSlider value={this.state.co2} onUpdateSlider={handleCO2Slider} label={co2Label} 
                            labelImageClass="co2-molecule" maxValue={maxCO2} />
           </div>
           <br/>
           <br/>
-          <button onClick={handleSubmit}>Submit</button>
           <br/>
           Bubbles: {this.state.bubbles}
         </div>
         <div className="column right">
           <Experiment color={this.state.color} intensity={this.state.intensity / maxIntensity}/>
+          <Button onClick={handleSubmit} label="Start"/>
         </div>
       </div>
     );

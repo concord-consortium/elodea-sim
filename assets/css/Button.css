@@ -1,0 +1,28 @@
+.button-image {
+  height: 40px;
+  width: 124px;
+  background-image: url("../button-unpushed.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  margin-left: 155px;
+  margin-top: 644px;
+}
+
+.button-image:active {
+  background-image: url("../button-pushed.png");
+}
+
+.button-text {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

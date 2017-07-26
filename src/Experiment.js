@@ -2,9 +2,6 @@ require('../assets/css/Experiment.css');
 
 import React, {PropTypes} from 'react';
 
-/**
- * A counter button: tap the button to increase the count.
- */
 const Experiment = ({color, intensity}) => {
   return (
     <div className="experiment-container">
