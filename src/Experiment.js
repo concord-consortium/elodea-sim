@@ -12,7 +12,7 @@ const Experiment = ({color, intensity}) => {
       <div className="beaker"></div>
       <div className="elodea"></div>
       <div className="water"></div>
-      <div className="light"></div>
+      <div className="light" style={{opacity: intensity}}></div>
       <div className="lamp-base"></div>
     </div>
 

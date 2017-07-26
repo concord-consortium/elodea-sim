@@ -176,7 +176,7 @@ class Application extends React.Component {
           Bubbles: {this.state.bubbles}
         </div>
         <div className="column right">
-          <Experiment />
+          <Experiment intensity={this.state.intensity / maxIntensity}/>
         </div>
       </div>
     );
