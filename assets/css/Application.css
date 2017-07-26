@@ -5,6 +5,12 @@ body {
 #mount {
   margin-left: 100px;
 }
+.application-container {
+  display: flex;
+}
+.column.right {
+  margin-left: 153px;
+}
 .sliders {
   display: flex;
   flex-direction: row;

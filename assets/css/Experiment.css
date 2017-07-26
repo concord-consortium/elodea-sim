@@ -1,0 +1,73 @@
+.experiment-container {
+  position: absolute;
+  margin-top: 150px;
+}
+
+.lamp-top {
+  height: 544px;
+  width: 303px;
+  background-image: url("../lamp-top.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-left: 144px;
+  margin-top: -147px;
+  z-index: 6;
+}
+
+.beaker {
+  height: 424px;
+  width: 354px;
+  background-image: url("../beaker.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 5;
+}
+
+.elodea {
+  height: 205px;
+  width: 147px;
+  background-image: url("../Elodea-plant.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-left: 147px;
+  margin-top: 206px;
+  z-index: 4;
+}
+
+.water {
+  height: 348px;
+  width: 264px;
+  background-image: url("../Elodea-water.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-left: 90px;
+  margin-top: 84px;
+  z-index: 3;
+}
+
+.light {
+  height: 509px;
+  width: 439px;
+  background-image: url("../Elodea-glow-blue.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-left: 6px;
+  margin-top: -45px;
+  z-index: 2;
+}
+
+.lamp-base {
+  height: 591px;
+  width: 478px;
+  background-image: url("../lamp-base.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-top: -120px;
+  z-index: 1;
+}

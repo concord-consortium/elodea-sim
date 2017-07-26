@@ -3,6 +3,7 @@ require('../assets/css/Application.css');
 import React from 'react';
 import ReactSlider from 'react-slider';
 import {RadioGroup, Radio} from 'react-radio-group';
+import Experiment from './Experiment';
 
 const minCO2 = 0,
       maxCO2 = 10,
@@ -144,34 +145,39 @@ class Application extends React.Component {
     }
 
     return (
-      <div>
-        <RadioGroup name="light-color" selectedValue={this.state.color} onChange={handleColorChange}>
-          <Radio value="white" />White
-          <Radio value="blue" />Blue
-          <Radio value="red" />Red
-          <Radio value="green" />Green
-        </RadioGroup>
-        <div className="sliders">
-          <div className="labeled-slider">
-            <ReactSlider orientation="vertical" defaultValue={this.state.co2} onChange={handleCO2Slider} step={.1} max={maxCO2}>
-              <div>{this.state.co2}</div>
-            </ReactSlider>
-            CO2 Value
+      <div className="application-container">
+        <div className="column left">
+          <RadioGroup name="light-color" selectedValue={this.state.color} onChange={handleColorChange}>
+            <Radio value="white" />White
+            <Radio value="blue" />Blue
+            <Radio value="red" />Red
+            <Radio value="green" />Green
+          </RadioGroup>
+          <div className="sliders">
+            <div className="labeled-slider">
+              <ReactSlider orientation="vertical" defaultValue={this.state.co2} onChange={handleCO2Slider} step={.1} max={maxCO2}>
+                <div>{this.state.co2}</div>
+              </ReactSlider>
+              CO2 Value
+            </div>
+            <br/>
+            <br/>
+            <div className="labeled-slider">
+              <ReactSlider orientation="vertical" defaultValue={this.state.intensity} onChange={handleIntensitySlider} step={.1} max={maxIntensity}>
+                <div>{this.state.intensity}</div>
+              </ReactSlider>
+              Intensity Value
+            </div>
           </div>
           <br/>
           <br/>
-          <div className="labeled-slider">
-            <ReactSlider orientation="vertical" defaultValue={this.state.intensity} onChange={handleIntensitySlider} step={.1} max={maxIntensity}>
-              <div>{this.state.intensity}</div>
-            </ReactSlider>
-            Intensity Value
-          </div>
+          <button onClick={handleSubmit}>Submit</button>
+          <br/>
+          Bubbles: {this.state.bubbles}
         </div>
-        <br/>
-        <br/>
-        <button onClick={handleSubmit}>Submit</button>
-        <br/>
-        Bubbles: {this.state.bubbles}
+        <div className="column right">
+          <Experiment />
+        </div>
       </div>
     );
   }
