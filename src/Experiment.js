@@ -12,7 +12,7 @@ const Experiment = ({color, intensity}) => {
       <div className="beaker"></div>
       <div className="elodea"></div>
       <div className="water"></div>
-      <div className="light" style={{opacity: intensity}}></div>
+      <div className={"light " + color} style={{opacity: intensity}}></div>
       <div className="lamp-base"></div>
     </div>
 
@@ -20,8 +20,8 @@ const Experiment = ({color, intensity}) => {
 }
 
 Experiment.propTypes = {
-  color: PropTypes.string,
-  intensity: PropTypes.number
+  color: PropTypes.string.isRequired,
+  intensity: PropTypes.number.isRequired
 };
 
 export default Experiment;

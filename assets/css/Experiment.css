@@ -52,13 +52,25 @@
 .light {
   height: 509px;
   width: 439px;
-  background-image: url("../Elodea-glow-blue.png");
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
   margin-left: 6px;
   margin-top: -45px;
   z-index: 2;
+}
+
+.light.white {
+  background-image: url("../Elodea-glow-white.png");
+}
+.light.blue {
+  background-image: url("../Elodea-glow-blue.png");
+}
+.light.red {
+  background-image: url("../Elodea-glow-red.png");
+}
+.light.green {
+  background-image: url("../Elodea-glow-green.png");
 }
 
 .lamp-base {
