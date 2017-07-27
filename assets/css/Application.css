@@ -15,4 +15,27 @@ body {
   display: flex;
   flex-direction: row;
   margin-left: -100px;
+  margin-top: 20px;
+}
+
+.radio-group.bulbs {
+  height: 117px;
+}
+.bulb {
+  width: 62px;
+  height: 69px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.bulb.colorless {
+  background-image: url("../bulb-white.png");
+}
+.bulb.red {
+  background-image: url("../bulb-red.png");
+}
+.bulb.green {
+  background-image: url("../bulb-green.png");
+}
+.bulb.blue {
+  background-image: url("../bulb-blue.png");
 }

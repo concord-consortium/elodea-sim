@@ -1,0 +1,27 @@
+.radio-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio-option {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.radio-button {
+  height: 20px;
+  width: 20px;
+  background-image: url("../radio-off.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.radio-button.selected {
+  background-image: url("../radio-on.png");
+}
+
+.radio-label {
+  text-transform: capitalize;
+}

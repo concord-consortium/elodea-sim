@@ -5,12 +5,13 @@ import {RadioGroup, Radio} from 'react-radio-group';
 import Experiment from './Experiment';
 import LabeledSlider from './LabeledSlider';
 import Button from './Button';
+import LabeledRadioGroup from './LabeledRadioGroup';
 
 const minCO2 = 0,
       maxCO2 = 10,
       minIntensity = 0,
       maxIntensity = 10,
-      colorMultipliers = {blue: 1, red: .5, green: 0, white: 1.5},
+      colorMultipliers = {colorless: 1.5, red: .5, green: 0, blue: 1},
 
       kDataSetName = 'Bubbles',
       kAppName = "Bubbles",
@@ -41,7 +42,7 @@ class Application extends React.Component {
     this.state = {
       co2: (maxCO2 - minCO2)/2,
       intensity: (maxIntensity - minIntensity)/2,
-      color: "white",
+      color: "colorless",
       bubbles: null,
       doBubble: false
     };
@@ -153,12 +154,11 @@ class Application extends React.Component {
     return (
       <div className="application-container">
         <div className="column left">
-          <RadioGroup name="light-color" selectedValue={this.state.color} onChange={handleColorChange}>
-            <Radio value="white" />White
-            <Radio value="blue" />Blue
-            <Radio value="red" />Red
-            <Radio value="green" />Green
-          </RadioGroup>
+          <LabeledRadioGroup className="bulbs"
+                             labels={Object.keys(colorMultipliers)} 
+                             labelImageClasses={Object.keys(colorMultipliers).map(key => "bulb " + key)}
+                             onChange={handleColorChange}
+                             selected={this.state.color} />
           <div className="sliders">
             <LabeledSlider value={this.state.intensity} onUpdateSlider={handleIntensitySlider} label={<div>Light Level (lux)</div>}
                            labelImageClass="lux-bulb" maxValue={maxIntensity} />
