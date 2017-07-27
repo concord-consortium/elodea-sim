@@ -23309,7 +23309,7 @@ var minCO2 = 0,
       pluralCase: "bubbles",
       setOfCasesWithArticle: "a sample"
     },
-    attrs: [{ name: "color", type: 'categorical', colormap: { "colorless": "white", "red": "red", "green": "green", "blue": "blue" } }, { name: "CO2", unit: "ppm", type: 'numeric', precision: 2 }, { name: "intensity", unit: "lux", type: 'numeric', precision: 2 }, { name: "bubbles", type: 'numeric', precision: 1 }]
+    attrs: [{ name: "color", type: 'categorical', colormap: { "colorless": "gray", "red": "red", "green": "green", "blue": "blue" } }, { name: "CO2", unit: "ppm", type: 'numeric', precision: 2 }, { name: "intensity", unit: "lux", type: 'numeric', precision: 2 }, { name: "bubbles", type: 'numeric', precision: 1 }]
   }]
 };
 
