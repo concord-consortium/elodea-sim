@@ -24,6 +24,9 @@
   background-repeat: no-repeat;
   margin-left: 17px;
 }
+.handle.active {
+  background-image: url("../Elodea-slider-button-pushed.png");
+}
 .bar {
   position: relative;
   background: #ddd;

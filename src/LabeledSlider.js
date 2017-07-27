@@ -10,7 +10,7 @@ const LabeledSlider = ({value, maxValue, labelImageClass, label, onUpdateSlider}
 
   return (
     <div className="labeled-slider">
-      <ReactSlider orientation="vertical" defaultValue={value} onChange={handleSlide} step={.1} max={maxValue}>
+      <ReactSlider orientation="vertical" invert={true} defaultValue={value} onChange={handleSlide} step={.1} max={maxValue}>
         <div>{value}</div>
       </ReactSlider>
       <div className={labelImageClass}></div>
