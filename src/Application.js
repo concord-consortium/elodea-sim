@@ -25,9 +25,9 @@ const minCO2 = 0,
                                  setOfCasesWithArticle: "a sample"
                                },
                                attrs: [
-                                {name: "color", type: 'categorical'},
-                                {name: "CO2", type: 'numeric', precision: 2},
-                                {name: "intensity", type: 'numeric', precision: 2},
+                                {name: "color", type: 'categorical', colormap: {"colorless": "gray", "red": "red", "green": "green", "blue": "blue"}},
+                                {name: "CO2", unit: "ppm", type: 'numeric', precision: 2},
+                                {name: "intensity", unit: "lux", type: 'numeric', precision: 2},
                                 {name: "bubbles", type: 'numeric', precision: 1},
                               ]
                             }
