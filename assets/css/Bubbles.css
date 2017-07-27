@@ -1,0 +1,35 @@
+@-webkit-keyframes bubble-pulse-1 {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes bubble-pulse-2 {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.bubble-1.pulse {
+  -webkit-animation-name: bubble-pulse-1;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.bubble-2.pulse {
+  -webkit-animation-name: bubble-pulse-2;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+}

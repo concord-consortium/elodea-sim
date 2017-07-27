@@ -12,7 +12,7 @@
   position: absolute;
   margin-left: 144px;
   margin-top: -147px;
-  z-index: 6;
+  z-index: 7;
 }
 
 .beaker {
@@ -22,6 +22,30 @@
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
+  z-index: 6;
+}
+
+.bubble-1.pulse {
+  height: 151px;
+  width: 127px;
+  background-image: url("../Elodea-bubbles-1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-left: 144px;
+  margin-top: 224px;
+  z-index: 5;
+}
+
+.bubble-2.pulse {
+  height: 145px;
+  width: 106px;
+  background-image: url("../Elodea-bubbles-2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-left: 154px;
+  margin-top: 223px;
   z-index: 5;
 }
 

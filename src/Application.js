@@ -42,7 +42,8 @@ class Application extends React.Component {
       co2: (maxCO2 - minCO2)/2,
       intensity: (maxIntensity - minIntensity)/2,
       color: "white",
-      bubbles: null
+      bubbles: null,
+      doBubble: false
     };
 
     let requestDataContext = (name) => {
@@ -137,10 +138,15 @@ class Application extends React.Component {
           rate = Math.min(maxRate, this.state.intensity * colorMultiplier),
           bubbles = Math.round(rate * 10);
 
-      this.setState({bubbles});
+      this.setState({doBubble: true});
 
-      sendItems(kDataSetName, {bubbles, color: this.state.color, CO2: this.state.co2, intensity: this.state.intensity});
-      guaranteeCaseTable();
+      let _this = this;
+      setTimeout(function() {
+        _this.setState({doBubble: false});
+        _this.setState({bubbles});
+        sendItems(kDataSetName, {bubbles, color: _this.state.color, CO2: _this.state.co2, intensity: _this.state.intensity});
+        guaranteeCaseTable();
+      }, 2000);
     }
 
     let co2Label = <div>CO<sub>2</sub> Level (ppm)</div>;
@@ -165,7 +171,7 @@ class Application extends React.Component {
           Bubbles: {this.state.bubbles}
         </div>
         <div className="column right">
-          <Experiment color={this.state.color} intensity={this.state.intensity / maxIntensity}/>
+          <Experiment color={this.state.color} intensity={this.state.intensity / maxIntensity} doBubble={this.state.doBubble}/>
           <Button onClick={handleSubmit} label="Start"/>
         </div>
       </div>
