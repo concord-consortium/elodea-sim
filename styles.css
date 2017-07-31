@@ -259,15 +259,17 @@
 }body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   font-family: Verdana;
+  font-size: 1.4em;
 }
 #mount {
-  margin-left: 100px;
+  margin-top: -135px;
+  margin-left: -75px;
 }
 .application-container {
   display: flex;
 }
-.column.right {
-  margin-left: 153px;
+.column {
+  transform: scale(.65);
 }
 .sliders {
   display: flex;
