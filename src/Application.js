@@ -65,7 +65,7 @@ class Application extends React.Component {
     codapInterface.init({
       name: kDataSetName,
       title: kAppName,
-      dimensions: {width: 1200, height: 1600},
+      dimensions: {width: 850, height: 540},
       version: '0.1'
     }).then(function (iResult) {
       // get interactive state so we can save the sample set index.
