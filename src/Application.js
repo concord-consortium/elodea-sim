@@ -1,4 +1,5 @@
 require('../assets/css/Application.css');
+require('../assets/bubbles.mp3');
 
 import React from 'react';
 import {RadioGroup, Radio} from 'react-radio-group';
@@ -140,6 +141,9 @@ class Application extends React.Component {
           bubbles = Math.round(rate * 10);
 
       this.setState({doBubble: true});
+      let sound = new Audio("assets/bubbles.mp3");
+      sound.play();
+
 
       let _this = this;
       setTimeout(function() {
@@ -147,6 +151,7 @@ class Application extends React.Component {
         _this.setState({bubbles});
         sendItems(kDataSetName, {bubbles, color: _this.state.color, CO2: _this.state.co2, intensity: _this.state.intensity});
         guaranteeCaseTable();
+        sound.pause();
       }, 2000);
     }
 
