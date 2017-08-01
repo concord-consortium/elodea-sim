@@ -45,7 +45,8 @@ class Application extends React.Component {
       intensity: (maxIntensity - minIntensity)/2,
       color: "colorless",
       bubbles: null,
-      doBubble: false
+      doBubble: false,
+      speed: "x1"
     };
 
     let requestDataContext = (name) => {
@@ -97,6 +98,9 @@ class Application extends React.Component {
     }
     let handleColorChange = (newVal) => {
       this.setState({color: newVal})
+    }
+    let handleSpeedChange = (newVal) => {
+      this.setState({speed: newVal})
     }
 
     let guaranteeCaseTable = () => {
@@ -177,6 +181,13 @@ class Application extends React.Component {
         </div>
         <div className="column right">
           <Experiment color={this.state.color} intensity={this.state.intensity / maxIntensity} doBubble={this.state.doBubble}/>
+          <div className="speed-container">
+            <div>Speed: </div>
+            <LabeledRadioGroup className="speed"
+                               labels={["x1", "x5"]} 
+                               onChange={handleSpeedChange}
+                               selected={this.state.speed} />
+          </div>
           <Button onClick={handleSubmit} label="Start"/>
         </div>
       </div>

@@ -3,8 +3,8 @@ require('../assets/css/LabeledRadioGroup.css');
 import React, {PropTypes} from 'react';
 import ReactSlider from 'react-slider';
 
-const LabeledRadioGroup = ({className, labels, labelImageClasses, onChange, selected}) => {
-  if (labels.length !== labelImageClasses.length) {
+const LabeledRadioGroup = ({className, labels, labelImageClasses = [], onChange, selected}) => {
+  if (labelImageClasses.length > 0 && labels.length !== labelImageClasses.length) {
     console.log("Labels and image label classes must be the same length!");
   }
 
@@ -15,10 +15,11 @@ const LabeledRadioGroup = ({className, labels, labelImageClasses, onChange, sele
   let buttons = [];
   for (let i = 0; i < labels.length; i++) {
     let label = labels[i],
-        labelImageClass = labelImageClasses[i];
+        labelImageClass = labelImageClasses[i],
+        labelImageDiv = labelImageClass ? <div className={"radio-image " + labelImageClass}></div> : null;
     buttons.push(
       <div className="radio-option" key={i}>
-        <div className={"radio-image " + labelImageClass}></div>
+        {labelImageDiv}
         <div className={"radio-button" + (selected === label ? " selected" : "")} 
              onClick={handleChange.bind(this, label)}></div>
         <div className="radio-label">{label}</div>
