@@ -10,10 +10,22 @@
   display: flex;
   flex-direction: row
 }
+.slider-container .number-labels {
+  display: flex;
+  flex-direction: column;
+  height: 475px;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: absolute;
+  margin-left: -56px;
+  margin-top: 12px;
+  color: gray;
+  font-size: .9em;
+}
 .slider {
   height: 500px;
   width: 33px;
-  margin-left: -18px;
+  margin-left: -16px;
   background-image: url("../slider.png");
   background-size: contain;
   background-repeat: no-repeat;
