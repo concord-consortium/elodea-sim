@@ -23293,12 +23293,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 __webpack_require__(200);
+__webpack_require__(201);
 
 var minCO2 = 0,
     maxCO2 = 10,
     minIntensity = 0,
     maxIntensity = 10,
     colorMultipliers = { colorless: 1.5, red: .5, green: 0, blue: 1 },
+    animationTimes = { x1: 2000, x5: 500 },
     kDataSetName = 'Bubbles',
     kAppName = "Bubbles",
     kDataSetTemplate = {
@@ -23328,7 +23330,8 @@ var Application = function (_React$Component) {
       intensity: (maxIntensity - minIntensity) / 2,
       color: "colorless",
       bubbles: null,
-      doBubble: false
+      doBubble: false,
+      speed: "x1"
     };
 
     var requestDataContext = function requestDataContext(name) {
@@ -23386,6 +23389,9 @@ var Application = function (_React$Component) {
       var handleColorChange = function handleColorChange(newVal) {
         _this3.setState({ color: newVal });
       };
+      var handleSpeedChange = function handleSpeedChange(newVal) {
+        _this3.setState({ speed: newVal });
+      };
 
       var guaranteeCaseTable = function guaranteeCaseTable() {
         return new Promise(function (resolve, reject) {
@@ -23428,6 +23434,8 @@ var Application = function (_React$Component) {
             bubbles = Math.round(rate * 10);
 
         _this3.setState({ doBubble: true });
+        var sound = new Audio("assets/bubbles.mp3");
+        sound.play();
 
         var _this = _this3;
         setTimeout(function () {
@@ -23435,7 +23443,8 @@ var Application = function (_React$Component) {
           _this.setState({ bubbles: bubbles });
           sendItems(kDataSetName, { bubbles: bubbles, color: _this.state.color, CO2: _this.state.co2, intensity: _this.state.intensity });
           guaranteeCaseTable();
-        }, 2000);
+          sound.pause();
+        }, animationTimes[_this3.state.speed]);
       };
 
       var co2Label = _react2.default.createElement(
@@ -23483,7 +23492,20 @@ var Application = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'column right' },
-          _react2.default.createElement(_Experiment2.default, { color: this.state.color, intensity: this.state.intensity / maxIntensity, doBubble: this.state.doBubble }),
+          _react2.default.createElement(_Experiment2.default, { color: this.state.color, speed: this.state.speed, intensity: this.state.intensity / maxIntensity, doBubble: this.state.doBubble }),
+          _react2.default.createElement(
+            'div',
+            { className: 'speed-container' },
+            _react2.default.createElement(
+              'div',
+              null,
+              'Speed: '
+            ),
+            _react2.default.createElement(_LabeledRadioGroup2.default, { className: 'speed',
+              labels: Object.keys(animationTimes),
+              onChange: handleSpeedChange,
+              selected: this.state.speed })
+          ),
           _react2.default.createElement(_Button2.default, { onClick: handleSubmit, label: 'Start' })
         )
       );
@@ -23724,7 +23746,8 @@ __webpack_require__(192);
 var Experiment = function Experiment(_ref) {
   var color = _ref.color,
       intensity = _ref.intensity,
-      doBubble = _ref.doBubble;
+      doBubble = _ref.doBubble,
+      speed = _ref.speed;
 
   return _react2.default.createElement(
     'div',
@@ -23732,8 +23755,8 @@ var Experiment = function Experiment(_ref) {
     _react2.default.createElement('div', { className: 'lamp-top' }),
     _react2.default.createElement('div', { className: 'beaker' }),
     _react2.default.createElement('div', { className: 'elodea' }),
-    _react2.default.createElement('div', { className: "bubble-1" + (doBubble ? " pulse" : "") }),
-    _react2.default.createElement('div', { className: "bubble-2" + (doBubble ? " pulse" : "") }),
+    _react2.default.createElement('div', { className: "bubble-1" + (doBubble ? " pulse " + speed : "") }),
+    _react2.default.createElement('div', { className: "bubble-2" + (doBubble ? " pulse " + speed : "") }),
     _react2.default.createElement('div', { className: 'water' }),
     _react2.default.createElement('div', { className: "light " + color, style: { opacity: intensity } }),
     _react2.default.createElement('div', { className: 'lamp-base' })
@@ -23743,7 +23766,8 @@ var Experiment = function Experiment(_ref) {
 Experiment.propTypes = {
   color: _react.PropTypes.string.isRequired,
   intensity: _react.PropTypes.number.isRequired,
-  doBubble: _react.PropTypes.bool
+  doBubble: _react.PropTypes.bool,
+  speed: _react.PropTypes.string
 };
 
 exports.default = Experiment;
@@ -23940,11 +23964,12 @@ __webpack_require__(199);
 var LabeledRadioGroup = function LabeledRadioGroup(_ref) {
   var className = _ref.className,
       labels = _ref.labels,
-      labelImageClasses = _ref.labelImageClasses,
+      _ref$labelImageClasse = _ref.labelImageClasses,
+      labelImageClasses = _ref$labelImageClasse === undefined ? [] : _ref$labelImageClasse,
       onChange = _ref.onChange,
       selected = _ref.selected;
 
-  if (labels.length !== labelImageClasses.length) {
+  if (labelImageClasses.length > 0 && labels.length !== labelImageClasses.length) {
     console.log("Labels and image label classes must be the same length!");
   }
 
@@ -23955,11 +23980,12 @@ var LabeledRadioGroup = function LabeledRadioGroup(_ref) {
   var buttons = [];
   for (var i = 0; i < labels.length; i++) {
     var label = labels[i],
-        labelImageClass = labelImageClasses[i];
+        labelImageClass = labelImageClasses[i],
+        labelImageDiv = labelImageClass ? _react2.default.createElement('div', { className: "radio-image " + labelImageClass }) : null;
     buttons.push(_react2.default.createElement(
       'div',
       { className: 'radio-option', key: i },
-      _react2.default.createElement('div', { className: "radio-image " + labelImageClass }),
+      labelImageDiv,
       _react2.default.createElement('div', { className: "radio-button" + (selected === label ? " selected" : ""),
         onClick: handleChange.bind(undefined, label) }),
       _react2.default.createElement(
@@ -23998,6 +24024,12 @@ exports.default = LabeledRadioGroup;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/bubbles.mp3";
 
 /***/ })
 /******/ ]);
