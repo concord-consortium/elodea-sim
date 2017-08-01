@@ -143,7 +143,11 @@ class Application extends React.Component {
       let colorMultiplier = colorMultipliers[this.state.color],
           maxRate = this.state.co2,
           rate = Math.min(maxRate, this.state.intensity * colorMultiplier),
-          bubbles = Math.round(rate * 10);
+          baseBubbles = Math.round(rate * 10),
+          // Add between -10% and 10% noise
+          noisePercent = (Math.random() * .2) - .1,
+          bubbles = Math.round(baseBubbles + baseBubbles * noisePercent);
+
 
       this.setState({doBubble: true});
       let sound = new Audio("assets/bubbles.mp3");
