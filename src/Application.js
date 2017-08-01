@@ -13,6 +13,7 @@ const minCO2 = 0,
       minIntensity = 0,
       maxIntensity = 10,
       colorMultipliers = {colorless: 1.5, red: .5, green: 0, blue: 1},
+      animationTimes = {x1: 2000, x5: 500},
 
       kDataSetName = 'Bubbles',
       kAppName = "Bubbles",
@@ -156,7 +157,7 @@ class Application extends React.Component {
         sendItems(kDataSetName, {bubbles, color: _this.state.color, CO2: _this.state.co2, intensity: _this.state.intensity});
         guaranteeCaseTable();
         sound.pause();
-      }, 2000);
+      }, animationTimes[this.state.speed]);
     }
 
     let co2Label = <div>CO<sub>2</sub> Level (ppm)</div>;
@@ -180,11 +181,11 @@ class Application extends React.Component {
           Bubbles: {this.state.bubbles}
         </div>
         <div className="column right">
-          <Experiment color={this.state.color} intensity={this.state.intensity / maxIntensity} doBubble={this.state.doBubble}/>
+          <Experiment color={this.state.color} speed={this.state.speed} intensity={this.state.intensity / maxIntensity} doBubble={this.state.doBubble}/>
           <div className="speed-container">
             <div>Speed: </div>
             <LabeledRadioGroup className="speed"
-                               labels={["x1", "x5"]} 
+                               labels={Object.keys(animationTimes)} 
                                onChange={handleSpeedChange}
                                selected={this.state.speed} />
           </div>

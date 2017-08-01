@@ -33,3 +33,7 @@
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
 }
+
+.pulse.x5 {
+  -webkit-animation-duration: .3s;
+}
