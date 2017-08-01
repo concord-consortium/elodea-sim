@@ -6,11 +6,24 @@
   align-items: center;
   justify-content: space-around;
 }
+.slider-container {
+  display: flex;
+  flex-direction: row
+}
 .slider {
   height: 500px;
-  width: 60px;
+  width: 33px;
   margin-left: -18px;
-  background-image: url("../Elodea-slider.png");
+  background-image: url("../slider.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.graduated-lines {
+  height: 452px;
+  width: 44px;
+  margin-left: -18px;
+  margin-top: 22px;
+  background-image: url("../graduated-lines.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -38,7 +51,7 @@
   background: #0f0;
 }
 .slider .handle {
-  left: 1px;
+  left: -25px;
   width: 48px;
   height: 48px;
   line-height: 50px;
