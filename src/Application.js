@@ -154,11 +154,14 @@ class Application extends React.Component {
       sound.play();
 
 
-      let _this = this;
+      let _this = this,
+          startColor = this.state.color,
+          startCO2 = this.state.co2,
+          startIntensity = this.state.intensity;
       setTimeout(function() {
         _this.setState({doBubble: false});
         _this.setState({bubbles});
-        sendItems(kDataSetName, {bubbles, color: _this.state.color, CO2: _this.state.co2, intensity: _this.state.intensity});
+        sendItems(kDataSetName, {bubbles, color: startColor, CO2: startCO2, intensity: startIntensity});
         guaranteeCaseTable();
         sound.pause();
       }, animationTimes[this.state.speed]);
