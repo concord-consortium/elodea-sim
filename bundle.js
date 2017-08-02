@@ -791,7 +791,7 @@ module.exports = ExecutionEnvironment;
 
 var _prodInvariant = __webpack_require__(18);
 
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -1235,6 +1235,16 @@ module.exports = { debugTool: debugTool };
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(17);
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -1265,7 +1275,7 @@ var ReactCurrentOwner = {
 module.exports = ReactCurrentOwner;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1520,16 +1530,6 @@ var ReactUpdates = {
 
 module.exports = ReactUpdates;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(17);
-
 
 /***/ }),
 /* 13 */
@@ -2037,7 +2037,7 @@ module.exports = DOMProperty;
 
 var _assign = __webpack_require__(4);
 
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 
 var warning = __webpack_require__(2);
 var canDefineProperty = __webpack_require__(25);
@@ -5932,10 +5932,10 @@ module.exports = KeyEscapeUtils;
 
 var _prodInvariant = __webpack_require__(3);
 
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 var ReactInstanceMap = __webpack_require__(24);
 var ReactInstrumentation = __webpack_require__(9);
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -6930,7 +6930,7 @@ module.exports = getIteratorFn;
 
 
 
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 var ReactComponentTreeHook = __webpack_require__(7);
 var ReactElement = __webpack_require__(15);
 
@@ -9654,7 +9654,7 @@ var _assign = __webpack_require__(4);
 
 var LinkedValueUtils = __webpack_require__(43);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 
 var warning = __webpack_require__(2);
 
@@ -10148,7 +10148,7 @@ module.exports = ReactHostComponent;
 
 var _prodInvariant = __webpack_require__(3);
 
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 var REACT_ELEMENT_TYPE = __webpack_require__(147);
 
 var getIteratorFn = __webpack_require__(148);
@@ -10596,7 +10596,7 @@ var DOMLazyTree = __webpack_require__(20);
 var DOMProperty = __webpack_require__(14);
 var React = __webpack_require__(17);
 var ReactBrowserEventEmitter = __webpack_require__(32);
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMContainerInfo = __webpack_require__(177);
 var ReactDOMFeatureFlags = __webpack_require__(178);
@@ -10606,7 +10606,7 @@ var ReactInstrumentation = __webpack_require__(9);
 var ReactMarkupChecksum = __webpack_require__(179);
 var ReactReconciler = __webpack_require__(19);
 var ReactUpdateQueue = __webpack_require__(48);
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 
 var emptyObject = __webpack_require__(26);
 var instantiateReactComponent = __webpack_require__(74);
@@ -11195,7 +11195,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
   if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(12),__webpack_require__(84),__webpack_require__(194)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10),__webpack_require__(84),__webpack_require__(195)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -12005,7 +12005,7 @@ module.exports = __webpack_require__(87);
 "use strict";
 
 
-var _react = __webpack_require__(12);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -12356,7 +12356,7 @@ module.exports = PooledClass;
 
 var _prodInvariant = __webpack_require__(18);
 
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 var REACT_ELEMENT_TYPE = __webpack_require__(53);
 
 var getIteratorFn = __webpack_require__(54);
@@ -13121,7 +13121,7 @@ var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDefaultInjection = __webpack_require__(103);
 var ReactMount = __webpack_require__(82);
 var ReactReconciler = __webpack_require__(19);
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 var ReactVersion = __webpack_require__(181);
 
 var findDOMNode = __webpack_require__(182);
@@ -13978,7 +13978,7 @@ var EventPluginHub = __webpack_require__(22);
 var EventPropagators = __webpack_require__(21);
 var ExecutionEnvironment = __webpack_require__(6);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 var SyntheticEvent = __webpack_require__(13);
 
 var inputValueTracking = __webpack_require__(65);
@@ -17552,7 +17552,7 @@ var _prodInvariant = __webpack_require__(3),
 var DOMPropertyOperations = __webpack_require__(71);
 var LinkedValueUtils = __webpack_require__(43);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -17972,7 +17972,7 @@ var _prodInvariant = __webpack_require__(3),
 
 var LinkedValueUtils = __webpack_require__(43);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -18139,7 +18139,7 @@ var ReactComponentEnvironment = __webpack_require__(44);
 var ReactInstanceMap = __webpack_require__(24);
 var ReactInstrumentation = __webpack_require__(9);
 
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 var ReactReconciler = __webpack_require__(19);
 var ReactChildReconciler = __webpack_require__(142);
 
@@ -18749,7 +18749,7 @@ var _prodInvariant = __webpack_require__(3),
 
 var React = __webpack_require__(17);
 var ReactComponentEnvironment = __webpack_require__(44);
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 var ReactErrorUtils = __webpack_require__(36);
 var ReactInstanceMap = __webpack_require__(24);
 var ReactInstrumentation = __webpack_require__(9);
@@ -20571,7 +20571,7 @@ module.exports = ReactDOMTextComponent;
 
 var _assign = __webpack_require__(4);
 
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 var Transaction = __webpack_require__(28);
 
 var emptyFunction = __webpack_require__(8);
@@ -20648,7 +20648,7 @@ var EventListener = __webpack_require__(79);
 var ExecutionEnvironment = __webpack_require__(6);
 var PooledClass = __webpack_require__(16);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 
 var getEventTarget = __webpack_require__(37);
 var getUnboundedScrollPosition = __webpack_require__(157);
@@ -20853,7 +20853,7 @@ var ReactComponentEnvironment = __webpack_require__(44);
 var ReactEmptyComponent = __webpack_require__(76);
 var ReactBrowserEventEmitter = __webpack_require__(32);
 var ReactHostComponent = __webpack_require__(77);
-var ReactUpdates = __webpack_require__(11);
+var ReactUpdates = __webpack_require__(12);
 
 var ReactInjection = {
   Component: ReactComponentEnvironment.injection,
@@ -22915,7 +22915,7 @@ module.exports = '15.6.1';
 
 var _prodInvariant = __webpack_require__(3);
 
-var ReactCurrentOwner = __webpack_require__(10);
+var ReactCurrentOwner = __webpack_require__(11);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactInstanceMap = __webpack_require__(24);
 
@@ -23262,7 +23262,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(12);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -23272,15 +23272,15 @@ var _Experiment = __webpack_require__(190);
 
 var _Experiment2 = _interopRequireDefault(_Experiment);
 
-var _LabeledSlider = __webpack_require__(193);
+var _LabeledSlider = __webpack_require__(194);
 
 var _LabeledSlider2 = _interopRequireDefault(_LabeledSlider);
 
-var _Button = __webpack_require__(196);
+var _Button = __webpack_require__(197);
 
 var _Button2 = _interopRequireDefault(_Button);
 
-var _LabeledRadioGroup = __webpack_require__(198);
+var _LabeledRadioGroup = __webpack_require__(199);
 
 var _LabeledRadioGroup2 = _interopRequireDefault(_LabeledRadioGroup);
 
@@ -23292,8 +23292,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-__webpack_require__(200);
 __webpack_require__(201);
+__webpack_require__(202);
 
 var minCO2 = 0,
     maxCO2 = 10,
@@ -23431,17 +23431,24 @@ var Application = function (_React$Component) {
         var colorMultiplier = colorMultipliers[_this3.state.color],
             maxRate = _this3.state.co2,
             rate = Math.min(maxRate, _this3.state.intensity * colorMultiplier),
-            bubbles = Math.round(rate * 10);
+            baseBubbles = Math.round(rate * 10),
+
+        // Add between -10% and 10% noise
+        noisePercent = Math.random() * .2 - .1,
+            bubbles = Math.round(baseBubbles + baseBubbles * noisePercent);
 
         _this3.setState({ doBubble: true });
         var sound = new Audio("assets/bubbles.mp3");
         sound.play();
 
-        var _this = _this3;
+        var _this = _this3,
+            startColor = _this3.state.color,
+            startCO2 = _this3.state.co2,
+            startIntensity = _this3.state.intensity;
         setTimeout(function () {
           _this.setState({ doBubble: false });
           _this.setState({ bubbles: bubbles });
-          sendItems(kDataSetName, { bubbles: bubbles, color: _this.state.color, CO2: _this.state.co2, intensity: _this.state.intensity });
+          sendItems(kDataSetName, { bubbles: bubbles, color: startColor, CO2: startCO2, intensity: startIntensity });
           guaranteeCaseTable();
           sound.pause();
         }, animationTimes[_this3.state.speed]);
@@ -23492,7 +23499,8 @@ var Application = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'column right' },
-          _react2.default.createElement(_Experiment2.default, { color: this.state.color, speed: this.state.speed, intensity: this.state.intensity / maxIntensity, doBubble: this.state.doBubble }),
+          _react2.default.createElement(_Experiment2.default, { color: this.state.color, speed: this.state.speed, percentCO2: this.state.co2 / maxCO2,
+            percentIntensity: this.state.intensity / maxIntensity, doBubble: this.state.doBubble }),
           _react2.default.createElement(
             'div',
             { className: 'speed-container' },
@@ -23546,7 +23554,7 @@ var _propTypes = __webpack_require__(84);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _react = __webpack_require__(12);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -23734,18 +23742,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(12);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRadialGauge = __webpack_require__(191);
+
+var _reactRadialGauge2 = _interopRequireDefault(_reactRadialGauge);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(191);
 __webpack_require__(192);
+__webpack_require__(193);
 
 var Experiment = function Experiment(_ref) {
   var color = _ref.color,
-      intensity = _ref.intensity,
+      percentIntensity = _ref.percentIntensity,
+      percentCO2 = _ref.percentCO2,
       doBubble = _ref.doBubble,
       speed = _ref.speed;
 
@@ -23758,14 +23771,20 @@ var Experiment = function Experiment(_ref) {
     _react2.default.createElement('div', { className: "bubble-1" + (doBubble ? " pulse " + speed : "") }),
     _react2.default.createElement('div', { className: "bubble-2" + (doBubble ? " pulse " + speed : "") }),
     _react2.default.createElement('div', { className: 'water' }),
-    _react2.default.createElement('div', { className: "light " + color, style: { opacity: intensity } }),
-    _react2.default.createElement('div', { className: 'lamp-base' })
+    _react2.default.createElement('div', { className: "light " + color, style: { opacity: percentIntensity } }),
+    _react2.default.createElement('div', { className: 'lamp-base' }),
+    _react2.default.createElement(
+      'div',
+      { className: 'gauge' },
+      _react2.default.createElement(_reactRadialGauge2.default, { size: 40, currentValue: percentCO2 * 100 })
+    )
   );
 };
 
 Experiment.propTypes = {
   color: _react.PropTypes.string.isRequired,
-  intensity: _react.PropTypes.number.isRequired,
+  percentIntensity: _react.PropTypes.number.isRequired,
+  percentCO2: _react.PropTypes.number.isRequired,
   doBubble: _react.PropTypes.bool,
   speed: _react.PropTypes.string
 };
@@ -23774,9 +23793,237 @@ exports.default = Experiment;
 
 /***/ }),
 /* 191 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(10);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TICK_ID = 'tick';
+
+var Gauge = function (_Component) {
+    _inherits(Gauge, _Component);
+
+    function Gauge() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, Gauge);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Gauge.__proto__ || Object.getPrototypeOf(Gauge)).call.apply(_ref, [this].concat(args))), _this), _this.renderDial = function (opts) {
+            return _react2.default.createElement('circle', {
+                cx: opts.cX,
+                cy: opts.cY,
+                r: opts.radius,
+                fill: 'none',
+                stroke: opts.dialColor,
+                strokeWidth: opts.dialWidth
+            });
+        }, _this.defineTick = function (opts) {
+            var tX1 = opts.cX + opts.radius - Math.max(opts.dialWidth, opts.progressWidth) / 2;
+            var tX2 = tX1 - opts.tickLength;
+
+            return _react2.default.createElement('line', {
+                id: TICK_ID,
+                x1: tX1,
+                y1: opts.cY,
+                x2: tX2,
+                y2: opts.cY,
+                stroke: opts.tickColor,
+                strokeWidth: opts.tickWidth
+            });
+        }, _this.renderTicks = function (opts) {
+            var tickAngles = [];
+            for (var i = 0; i <= 360; i += opts.tickInterval) {
+                tickAngles.push(i);
+            }
+            return _react2.default.createElement(
+                'g',
+                { className: 'ticks' },
+                tickAngles.map(function (tickAngle, idx) {
+                    return _react2.default.createElement('use', {
+                        href: '#' + TICK_ID,
+                        key: 'tick-' + idx,
+                        transform: 'rotate(' + tickAngle + ' ' + opts.cX + ' ' + opts.cY + ')'
+                    });
+                })
+            );
+        }, _this.renderProgress = function (opts) {
+
+            var offset = opts.circumference * (1 - opts.currentValue / 100);
+
+            return _react2.default.createElement('circle', {
+                cx: opts.cX,
+                cy: opts.cY,
+                r: opts.radius,
+                fill: 'none',
+                stroke: opts.progressColor,
+                strokeWidth: opts.progressWidth,
+                strokeDasharray: opts.circumference,
+                strokeDashoffset: offset,
+                strokeLinecap: opts.progressRoundedEdge ? 'round' : 'butt'
+            });
+        }, _this.renderNeedle = function (opts) {
+
+            var x1 = opts.cX,
+                y1 = opts.cY - opts.needleWidth / 2,
+                x2 = opts.cX,
+                y2 = opts.cY + opts.needleWidth / 2,
+                x3 = opts.diameter,
+                y3 = opts.cY,
+                needleAngle = 360 * opts.currentValue / 100;
+
+            var needleElm = null;
+            if (opts.needleSharp) {
+                needleElm = _react2.default.createElement('polygon', {
+                    points: x1 + ',' + y1 + ' ' + x2 + ',' + y2 + ' ' + x3 + ',' + y3,
+                    fill: opts.needleColor
+                });
+            } else {
+                needleElm = _react2.default.createElement('line', {
+                    x1: opts.cX,
+                    y1: opts.cY,
+                    x2: opts.diameter,
+                    y2: opts.cY,
+                    fill: 'none',
+                    strokeWidth: opts.needleWidth,
+                    stroke: opts.needleColor
+                });
+            }
+
+            return _react2.default.createElement(
+                'g',
+                { className: 'needle' },
+                _react2.default.createElement(
+                    'g',
+                    { transform: 'rotate(' + needleAngle + ' ' + opts.cX + ' ' + opts.cY + ')' },
+                    needleElm
+                ),
+                _react2.default.createElement('circle', {
+                    cx: opts.cX,
+                    cy: opts.cY,
+                    r: opts.needleBaseSize,
+                    fill: opts.needleBaseColor
+                })
+            );
+        }, _this.renderText = function (opts) {
+            return _react2.default.createElement(
+                'text',
+                {
+                    x: opts.cX,
+                    y: opts.cY + 55,
+                    fontFamily: opts.progressFont,
+                    fontSize: opts.progressFontSize,
+                    transform: 'rotate(90 ' + opts.cX + ' ' + opts.cY + ')',
+                    textAnchor: 'middle',
+                    fill: opts.progressColor
+                },
+                opts.currentValue
+            );
+        }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(Gauge, [{
+        key: 'render',
+        value: function render() {
+
+            var opts = Object.assign({}, this.props);
+
+            var _opts = opts,
+                size = _opts.size,
+                dialWidth = _opts.dialWidth;
+
+
+            var cX = size / 2;
+            var cY = size / 2;
+            var radius = (size - 2 * dialWidth) / 2;
+            var diameter = 2 * radius;
+            var circumference = 2 * Math.PI * radius;
+            opts = Object.assign(opts, {
+                cX: cX,
+                cY: cY,
+                radius: radius,
+                diameter: diameter,
+                circumference: circumference
+            });
+
+            return _react2.default.createElement(
+                'svg',
+                {
+                    xmlns: 'http://www.w3.org/2000/svg',
+                    className: opts.className,
+                    height: size,
+                    width: size,
+                    viewBox: '0 0 ' + size + ' ' + size
+                },
+                _react2.default.createElement(
+                    'defs',
+                    null,
+                    this.defineTick(opts)
+                ),
+                _react2.default.createElement(
+                    'g',
+                    { transform: 'rotate(-90 ' + cX + ' ' + cY + ')' },
+                    this.renderDial(opts),
+                    this.renderTicks(opts),
+                    this.renderProgress(opts),
+                    this.renderNeedle(opts),
+                    this.renderText(opts)
+                )
+            );
+        }
+    }]);
+
+    return Gauge;
+}(_react.Component);
+
+Gauge.defaultProps = {
+    size: 200,
+
+    dialWidth: 10,
+    dialColor: '#eee',
+
+    tickLength: 3,
+    tickWidth: 1,
+    tickColor: '#cacaca',
+    tickInterval: 10,
+
+    maximumValue: 100,
+    currentValue: 25,
+    progressWidth: 5,
+    progressColor: '#3d3d3d',
+    progressRoundedEdge: true,
+    downProgressColor: 'red',
+    progressFont: 'Serif',
+    progressFontSize: '40',
+
+    needle: true,
+    needleBaseSize: 5,
+    needleBaseColor: '#9d9d9d',
+    needleWidth: 2,
+    needleSharp: false,
+    needleColor: '#8a8a8a'
+};
+
+module.exports = Gauge;
 
 /***/ }),
 /* 192 */
@@ -23786,6 +24033,12 @@ exports.default = Experiment;
 
 /***/ }),
 /* 193 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23795,7 +24048,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(12);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -23805,7 +24058,7 @@ var _reactSlider2 = _interopRequireDefault(_reactSlider);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(195);
+__webpack_require__(196);
 
 var LabeledSlider = function LabeledSlider(_ref) {
   var value = _ref.value,
@@ -23818,16 +24071,35 @@ var LabeledSlider = function LabeledSlider(_ref) {
     onUpdateSlider(newVal);
   };
 
+  var numberLabels = [];
+  for (var i = 10; i >= 0; i--) {
+    numberLabels.push(_react2.default.createElement(
+      'div',
+      { key: i },
+      i
+    ));
+  }
+
   return _react2.default.createElement(
     'div',
     { className: 'labeled-slider' },
     _react2.default.createElement(
-      _reactSlider2.default,
-      { orientation: 'vertical', invert: true, defaultValue: value, onChange: handleSlide, step: .1, max: maxValue },
+      'div',
+      { className: 'slider-container' },
       _react2.default.createElement(
         'div',
-        null,
-        value
+        { className: 'number-labels' },
+        numberLabels
+      ),
+      _react2.default.createElement('div', { className: 'graduated-lines' }),
+      _react2.default.createElement(
+        _reactSlider2.default,
+        { orientation: 'vertical', invert: true, defaultValue: value, onChange: handleSlide, step: .1, max: maxValue },
+        _react2.default.createElement(
+          'div',
+          null,
+          value
+        )
       )
     ),
     _react2.default.createElement('div', { className: labelImageClass }),
@@ -23845,7 +24117,7 @@ LabeledSlider.propTypes = {
 exports.default = LabeledSlider;
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23861,7 +24133,7 @@ exports.default = LabeledSlider;
 
 
 
-var React = __webpack_require__(12);
+var React = __webpack_require__(10);
 var factory = __webpack_require__(58);
 
 if (typeof React === 'undefined') {
@@ -23882,13 +24154,13 @@ module.exports = factory(
 
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23898,13 +24170,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(12);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(197);
+__webpack_require__(198);
 
 var Button = function Button(_ref) {
   var label = _ref.label,
@@ -23933,13 +24205,13 @@ Button.propTypes = {
 exports.default = Button;
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23949,7 +24221,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(12);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -23959,7 +24231,7 @@ var _reactSlider2 = _interopRequireDefault(_reactSlider);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(199);
+__webpack_require__(200);
 
 var LabeledRadioGroup = function LabeledRadioGroup(_ref) {
   var className = _ref.className,
@@ -24014,12 +24286,6 @@ LabeledRadioGroup.propTypes = {
 exports.default = LabeledRadioGroup;
 
 /***/ }),
-/* 199 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
 /* 200 */
 /***/ (function(module, exports) {
 
@@ -24027,6 +24293,12 @@ exports.default = LabeledRadioGroup;
 
 /***/ }),
 /* 201 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/bubbles.mp3";
