@@ -23306,7 +23306,11 @@ var minCO2 = 0,
     kDataSetTemplate = {
   name: "{name}",
   collections: [{
+    name: "sample_set",
+    attrs: [{ name: "sample_set_index", type: "categorical" }]
+  }, {
     name: 'bubbles',
+    parent: 'sample_set',
     labels: {
       pluralCase: "bubbles",
       setOfCasesWithArticle: "a sample"
@@ -23456,7 +23460,7 @@ var Application = function (_React$Component) {
         setTimeout(function () {
           _this.setState({ doBubble: false });
           _this.setState({ bubbles: bubbles });
-          sendItems(kDataSetName, { bubbles: bubbles, color: startColor, CO2: startCO2, intensity: startIntensity });
+          sendItems(kDataSetName, { sample_set_index: 1, bubbles: bubbles, color: startColor, CO2: startCO2, intensity: startIntensity });
           sendLog("Ran experiment with %@ light, %@ lux, %@ CO2 at %@ speed for a total of %@ bubbles", [startColor, startIntensity, startCO2, startSpeed, bubbles]);
           guaranteeCaseTable();
           sound.pause();
