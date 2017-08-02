@@ -23426,6 +23426,13 @@ var Application = function (_React$Component) {
           values: items
         });
       };
+      var sendLog = function sendLog(formatStr, replaceArgs) {
+        return codapInterface.sendRequest({
+          action: 'notify',
+          resource: 'logMessage',
+          values: { formatStr: formatStr, replaceArgs: replaceArgs }
+        });
+      };
 
       var handleSubmit = function handleSubmit() {
         var colorMultiplier = colorMultipliers[_this3.state.color],
@@ -23444,11 +23451,13 @@ var Application = function (_React$Component) {
         var _this = _this3,
             startColor = _this3.state.color,
             startCO2 = _this3.state.co2,
-            startIntensity = _this3.state.intensity;
+            startIntensity = _this3.state.intensity,
+            startSpeed = _this3.state.speed;
         setTimeout(function () {
           _this.setState({ doBubble: false });
           _this.setState({ bubbles: bubbles });
           sendItems(kDataSetName, { bubbles: bubbles, color: startColor, CO2: startCO2, intensity: startIntensity });
+          sendLog("Ran experiment with %@ light, %@ lux, %@ CO2 at %@ speed for a total of %@ bubbles", [startColor, startIntensity, startCO2, startSpeed, bubbles]);
           guaranteeCaseTable();
           sound.pause();
         }, animationTimes[_this3.state.speed]);
