@@ -3,6 +3,13 @@
   margin-top: 150px;
 }
 
+.experiment-container .gauge {
+  position: absolute;
+  z-index: 8;
+  margin-left: 18px;
+  margin-top: 171px;
+}
+
 .lamp-top {
   height: 544px;
   width: 303px;

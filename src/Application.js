@@ -185,7 +185,8 @@ class Application extends React.Component {
           Bubbles: {this.state.bubbles}
         </div>
         <div className="column right">
-          <Experiment color={this.state.color} speed={this.state.speed} intensity={this.state.intensity / maxIntensity} doBubble={this.state.doBubble}/>
+          <Experiment color={this.state.color} speed={this.state.speed} percentCO2={this.state.co2 / maxCO2} 
+                      percentIntensity={this.state.intensity / maxIntensity} doBubble={this.state.doBubble}/>
           <div className="speed-container">
             <div>Speed: </div>
             <LabeledRadioGroup className="speed"
