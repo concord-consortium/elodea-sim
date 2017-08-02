@@ -138,6 +138,13 @@ class Application extends React.Component {
         values: items
       });
     }
+    let sendLog = (formatStr, replaceArgs) => {
+      return codapInterface.sendRequest({
+        action: 'notify',
+        resource: 'logMessage',
+        values: {formatStr, replaceArgs}
+      })
+    }
 
     let handleSubmit = () => {
       let colorMultiplier = colorMultipliers[this.state.color],
@@ -157,11 +164,14 @@ class Application extends React.Component {
       let _this = this,
           startColor = this.state.color,
           startCO2 = this.state.co2,
-          startIntensity = this.state.intensity;
+          startIntensity = this.state.intensity,
+          startSpeed = this.state.speed;
       setTimeout(function() {
         _this.setState({doBubble: false});
         _this.setState({bubbles});
         sendItems(kDataSetName, {bubbles, color: startColor, CO2: startCO2, intensity: startIntensity});
+        sendLog("Ran experiment with %@ light, %@ lux, %@ CO2 at %@ speed for a total of %@ bubbles",
+                [startColor, startIntensity, startCO2, startSpeed, bubbles]);
         guaranteeCaseTable();
         sound.pause();
       }, animationTimes[this.state.speed]);
