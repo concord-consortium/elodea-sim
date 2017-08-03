@@ -271,7 +271,9 @@
 }
 
 .button-image.new-exp {
-  margin-top: 10px;
+  position: absolute;
+  margin-top: 727px;
+  margin-left: 479px;
 }.radio-group {
   display: flex;
   justify-content: space-between;
