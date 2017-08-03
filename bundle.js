@@ -23306,8 +23306,8 @@ var minCO2 = 0,
     kDataSetTemplate = {
   name: "{name}",
   collections: [{
-    name: "sample_set",
-    attrs: [{ name: "sample_set_index", type: "categorical" }]
+    name: "experiment_runs",
+    attrs: [{ name: "experiment_number", type: "categorical" }]
   }, {
     name: 'bubbles',
     parent: 'sample_set',
@@ -23335,7 +23335,8 @@ var Application = function (_React$Component) {
       color: "colorless",
       bubbles: null,
       doBubble: false,
-      speed: "x1"
+      speed: "x1",
+      experiment: 1
     };
 
     var requestDataContext = function requestDataContext(name) {
@@ -23395,6 +23396,9 @@ var Application = function (_React$Component) {
       };
       var handleSpeedChange = function handleSpeedChange(newVal) {
         _this3.setState({ speed: newVal });
+      };
+      var handleIncExperiment = function handleIncExperiment() {
+        _this3.setState({ experiment: _this3.state.experiment + 1 });
       };
 
       var guaranteeCaseTable = function guaranteeCaseTable() {
@@ -23456,11 +23460,12 @@ var Application = function (_React$Component) {
             startColor = _this3.state.color,
             startCO2 = _this3.state.co2,
             startIntensity = _this3.state.intensity,
-            startSpeed = _this3.state.speed;
+            startSpeed = _this3.state.speed,
+            startExperiment = _this3.state.experiment;
         setTimeout(function () {
           _this.setState({ doBubble: false });
           _this.setState({ bubbles: bubbles });
-          sendItems(kDataSetName, { sample_set_index: 1, bubbles: bubbles, color: startColor, CO2: startCO2, intensity: startIntensity });
+          sendItems(kDataSetName, { sample_set_index: startExperiment, bubbles: bubbles, color: startColor, CO2: startCO2, intensity: startIntensity });
           sendLog("Ran experiment with %@ light, %@ lux, %@ CO2 at %@ speed for a total of %@ bubbles", [startColor, startIntensity, startCO2, startSpeed, bubbles]);
           guaranteeCaseTable();
           sound.pause();
@@ -23527,7 +23532,8 @@ var Application = function (_React$Component) {
               onChange: handleSpeedChange,
               selected: this.state.speed })
           ),
-          _react2.default.createElement(_Button2.default, { onClick: handleSubmit, label: 'Start' })
+          _react2.default.createElement(_Button2.default, { className: 'start', onClick: handleSubmit, label: 'Start' }),
+          _react2.default.createElement(_Button2.default, { className: 'new-exp', onClick: handleIncExperiment, label: '+' })
         )
       );
     }
@@ -24193,7 +24199,9 @@ __webpack_require__(198);
 
 var Button = function Button(_ref) {
   var label = _ref.label,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      _ref$className = _ref.className,
+      className = _ref$className === undefined ? "" : _ref$className;
 
   var handleSlide = function handleSlide(newVal) {
     onUpdateSlider(newVal);
@@ -24201,7 +24209,7 @@ var Button = function Button(_ref) {
 
   return _react2.default.createElement(
     'div',
-    { className: 'button-image', onClick: onClick },
+    { className: "button-image " + className, onClick: onClick },
     _react2.default.createElement(
       'div',
       { className: 'button-text' },
@@ -24212,7 +24220,8 @@ var Button = function Button(_ref) {
 
 Button.propTypes = {
   label: _react.PropTypes.string,
-  onClick: _react.PropTypes.func
+  onClick: _react.PropTypes.func,
+  className: _react.PropTypes.string
 };
 
 exports.default = Button;
