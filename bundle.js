@@ -23436,9 +23436,12 @@ var Application = function (_React$Component) {
       };
       var sendLog = function sendLog(formatStr, replaceArgs) {
         return codapInterface.sendRequest({
-          action: 'notify',
-          resource: 'logMessage',
-          values: { formatStr: formatStr, replaceArgs: replaceArgs }
+          "action": "notify",
+          "resource": "logMessage",
+          "values": {
+            "formatStr": "Launched rocket with %@ engine toward %@",
+            "replaceArgs": ["red", "satellite"]
+          }
         });
       };
 
