@@ -2,13 +2,13 @@ require('../assets/css/Button.css');
 
 import React, {PropTypes} from 'react';
 
-const Button = ({label, onClick}) => {
+const Button = ({label, onClick, className=""}) => {
   let handleSlide = (newVal) => {
     onUpdateSlider(newVal);
   };
 
   return (
-    <div className="button-image" onClick={onClick}>
+    <div className={"button-image " + className} onClick={onClick}>
       <div className="button-text">{label}</div>
     </div>
   );
@@ -16,7 +16,8 @@ const Button = ({label, onClick}) => {
 
 Button.propTypes = {
   label: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  className: PropTypes.string
 }
 
 export default Button;

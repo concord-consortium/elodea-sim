@@ -21,7 +21,14 @@ const minCO2 = 0,
                            name: "{name}",
                            collections: [  
                              {
+                               name: "experiment_runs",
+                               attrs: [
+                                {name: "experiment_number", type: "categorical"}
+                               ]
+                             },
+                             {
                                name: 'bubbles',
+                               parent: 'experiment_runs',
                                labels: {
                                  pluralCase: "bubbles",
                                  setOfCasesWithArticle: "a sample"
@@ -47,7 +54,8 @@ class Application extends React.Component {
       color: "colorless",
       bubbles: null,
       doBubble: false,
-      speed: "x1"
+      speed: "x1",
+      experiment: 1
     };
 
     let requestDataContext = (name) => {
@@ -102,6 +110,9 @@ class Application extends React.Component {
     }
     let handleSpeedChange = (newVal) => {
       this.setState({speed: newVal})
+    }
+    let handleIncExperiment = () => {
+      this.setState({experiment: this.state.experiment + 1});
     }
 
     let guaranteeCaseTable = () => {
@@ -165,11 +176,12 @@ class Application extends React.Component {
           startColor = this.state.color,
           startCO2 = this.state.co2,
           startIntensity = this.state.intensity,
-          startSpeed = this.state.speed;
+          startSpeed = this.state.speed,
+          startExperiment = this.state.experiment;
       setTimeout(function() {
         _this.setState({doBubble: false});
         _this.setState({bubbles});
-        sendItems(kDataSetName, {bubbles, color: startColor, CO2: startCO2, intensity: startIntensity});
+        sendItems(kDataSetName, {experiment_number: startExperiment, bubbles, color: startColor, CO2: startCO2, intensity: startIntensity});
         sendLog("Ran experiment with %@ light, %@ lux, %@ CO2 at %@ speed for a total of %@ bubbles",
                 [startColor, startIntensity, startCO2, startSpeed, bubbles]);
         guaranteeCaseTable();
@@ -207,7 +219,8 @@ class Application extends React.Component {
                                onChange={handleSpeedChange}
                                selected={this.state.speed} />
           </div>
-          <Button onClick={handleSubmit} label="Start"/>
+          <Button className="start" onClick={handleSubmit} label="Start"/>
+          <Button className="new-exp" onClick={handleIncExperiment} label="+"/>
         </div>
       </div>
     );

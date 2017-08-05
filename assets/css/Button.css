@@ -9,9 +9,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
   margin-left: 155px;
-  margin-top: 700px;
 }
 
 .button-image:active {
@@ -25,4 +23,14 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.button-image.start {
+  margin-top: 700px;
+}
+
+.button-image.new-exp {
+  position: absolute;
+  margin-top: 727px;
+  margin-left: 479px;
 }
