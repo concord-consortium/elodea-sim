@@ -23362,7 +23362,7 @@ var Application = function (_React$Component) {
     codapInterface.init({
       name: kDataSetName,
       title: kAppName,
-      dimensions: { width: 850, height: 540 },
+      dimensions: { width: 870, height: 540 },
       version: '0.1'
     }).then(function (iResult) {
       // get interactive state so we can save the sample set index.
