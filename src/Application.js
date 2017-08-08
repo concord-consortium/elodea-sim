@@ -219,7 +219,7 @@ class Application extends React.Component {
                                onChange={handleSpeedChange}
                                selected={this.state.speed} />
           </div>
-          <Button className="start" onClick={handleSubmit} label="Start"/>
+          <Button className="start" onClick={handleSubmit} disabled={this.state.doBubble} label="Start"/>
           <Button className="new-exp" onClick={handleIncExperiment} label="+"/>
         </div>
       </div>

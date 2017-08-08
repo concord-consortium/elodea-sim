@@ -8,11 +8,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   margin-left: 155px;
 }
 
-.button-image:active {
+.button-image:not(.disabled) {
+  cursor: pointer;
+}
+
+.button-image:active:not(.disabled) {
   background-image: url("../button-pushed.png");
 }
 
@@ -33,4 +36,9 @@
   position: absolute;
   margin-top: 727px;
   margin-left: 479px;
+}
+
+.button-image.disabled {
+  opacity: .5;
+  cursor: default;
 }
