@@ -23441,12 +23441,9 @@ var Application = function (_React$Component) {
       };
       var sendLog = function sendLog(formatStr, replaceArgs) {
         return codapInterface.sendRequest({
-          "action": "notify",
-          "resource": "logMessage",
-          "values": {
-            "formatStr": "Launched rocket with %@ engine toward %@",
-            "replaceArgs": ["red", "satellite"]
-          }
+          action: 'notify',
+          resource: 'logMessage',
+          values: { formatStr: formatStr, replaceArgs: replaceArgs }
         });
       };
 
@@ -23544,8 +23541,8 @@ var Application = function (_React$Component) {
               values: Object.keys(animationTimes),
               selected: this.state.speed })
           ),
-          _react2.default.createElement(_Button2.default, { className: 'start', onClick: handleSubmit, disabled: this.state.doBubble, label: 'Start' }),
-          _react2.default.createElement(_Button2.default, { className: 'new-exp', onClick: handleIncExperiment, label: '+' })
+          _react2.default.createElement(_Button2.default, { className: 'start', onClick: handleSubmit, disabled: this.state.doBubble, label: 'Count Bubbles' }),
+          _react2.default.createElement(_Button2.default, { className: 'new-exp', onClick: handleIncExperiment, label: 'New Experiment' })
         )
       );
     }
