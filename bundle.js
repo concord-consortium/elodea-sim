@@ -23462,7 +23462,7 @@ var Application = function (_React$Component) {
         sound.play();
 
         var _this = _this3,
-            startColor = _this3.state.color,
+            startColor = colorMultipliers[_this3.state.color].label,
             startCO2 = _this3.state.co2,
             startIntensity = _this3.state.intensity,
             startSpeed = _this3.state.speed,
