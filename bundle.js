@@ -23299,7 +23299,12 @@ var minCO2 = 0,
     maxCO2 = 10,
     minIntensity = 0,
     maxIntensity = 10,
-    colorMultipliers = { colorless: 1.5, red: .5, green: 0, blue: 1 },
+    colorMultipliers = {
+  white: { multiplier: 1.5, label: "Full Spectrum" },
+  red: { multiplier: .5, label: "Red" },
+  green: { multiplier: 0, label: "Green" },
+  blue: { multiplier: 1, label: "Blue" }
+},
     animationTimes = { x1: 2000, x5: 500 },
     kDataSetName = 'Bubbles',
     kAppName = "Bubbles",
@@ -23315,7 +23320,7 @@ var minCO2 = 0,
       pluralCase: "bubbles",
       setOfCasesWithArticle: "a sample"
     },
-    attrs: [{ name: "color", type: 'categorical', colormap: { "colorless": "gray", "red": "red", "green": "green", "blue": "blue" } }, { name: "CO2", unit: "ppm", type: 'numeric', precision: 2 }, { name: "intensity", unit: "lux", type: 'numeric', precision: 2 }, { name: "bubbles", type: 'numeric', precision: 1 }]
+    attrs: [{ name: "color", type: 'categorical', colormap: { "white": "gray", "red": "red", "green": "green", "blue": "blue" } }, { name: "CO2", unit: "ppm", type: 'numeric', precision: 2 }, { name: "intensity", unit: "lux", type: 'numeric', precision: 2 }, { name: "bubbles", type: 'numeric', precision: 1 }]
   }]
 };
 
@@ -23332,7 +23337,7 @@ var Application = function (_React$Component) {
     _this2.state = {
       co2: (maxCO2 - minCO2) / 2,
       intensity: (maxIntensity - minIntensity) / 2,
-      color: "colorless",
+      color: "white",
       bubbles: null,
       doBubble: false,
       speed: "x1",
@@ -23436,17 +23441,14 @@ var Application = function (_React$Component) {
       };
       var sendLog = function sendLog(formatStr, replaceArgs) {
         return codapInterface.sendRequest({
-          "action": "notify",
-          "resource": "logMessage",
-          "values": {
-            "formatStr": "Launched rocket with %@ engine toward %@",
-            "replaceArgs": ["red", "satellite"]
-          }
+          action: 'notify',
+          resource: 'logMessage',
+          values: { formatStr: formatStr, replaceArgs: replaceArgs }
         });
       };
 
       var handleSubmit = function handleSubmit() {
-        var colorMultiplier = colorMultipliers[_this3.state.color],
+        var colorMultiplier = colorMultipliers[_this3.state.color].multiplier,
             maxRate = _this3.state.co2,
             rate = Math.min(maxRate, _this3.state.intensity * colorMultiplier),
             baseBubbles = Math.round(rate * 10),
@@ -23493,10 +23495,13 @@ var Application = function (_React$Component) {
           'div',
           { className: 'column left' },
           _react2.default.createElement(_LabeledRadioGroup2.default, { className: 'bulbs',
-            labels: Object.keys(colorMultipliers),
+            labels: Object.keys(colorMultipliers).map(function (key) {
+              return colorMultipliers[key].label;
+            }),
             labelImageClasses: Object.keys(colorMultipliers).map(function (key) {
               return "bulb " + key;
             }),
+            values: Object.keys(colorMultipliers),
             onChange: handleColorChange,
             selected: this.state.color }),
           _react2.default.createElement(
@@ -23533,9 +23538,10 @@ var Application = function (_React$Component) {
             _react2.default.createElement(_LabeledRadioGroup2.default, { className: 'speed',
               labels: Object.keys(animationTimes),
               onChange: handleSpeedChange,
+              values: Object.keys(animationTimes),
               selected: this.state.speed })
           ),
-          _react2.default.createElement(_Button2.default, { className: 'start', onClick: handleSubmit, label: 'Start' }),
+          _react2.default.createElement(_Button2.default, { className: 'start', onClick: handleSubmit, disabled: this.state.doBubble, label: 'Start' }),
           _react2.default.createElement(_Button2.default, { className: 'new-exp', onClick: handleIncExperiment, label: '+' })
         )
       );
@@ -24203,16 +24209,19 @@ __webpack_require__(198);
 var Button = function Button(_ref) {
   var label = _ref.label,
       onClick = _ref.onClick,
+      disabled = _ref.disabled,
       _ref$className = _ref.className,
       className = _ref$className === undefined ? "" : _ref$className;
 
-  var handleSlide = function handleSlide(newVal) {
-    onUpdateSlider(newVal);
+  var handleClick = function handleClick() {
+    if (!disabled) {
+      onClick();
+    }
   };
 
   return _react2.default.createElement(
     'div',
-    { className: "button-image " + className, onClick: onClick },
+    { className: "button-image " + className + (disabled ? " disabled" : ""), onClick: handleClick },
     _react2.default.createElement(
       'div',
       { className: 'button-text' },
@@ -24224,7 +24233,8 @@ var Button = function Button(_ref) {
 Button.propTypes = {
   label: _react.PropTypes.string,
   onClick: _react.PropTypes.func,
-  className: _react.PropTypes.string
+  className: _react.PropTypes.string,
+  disabled: _react.PropTypes.bool
 };
 
 exports.default = Button;
@@ -24261,6 +24271,7 @@ __webpack_require__(200);
 var LabeledRadioGroup = function LabeledRadioGroup(_ref) {
   var className = _ref.className,
       labels = _ref.labels,
+      values = _ref.values,
       _ref$labelImageClasse = _ref.labelImageClasses,
       labelImageClasses = _ref$labelImageClasse === undefined ? [] : _ref$labelImageClasse,
       onChange = _ref.onChange,
@@ -24270,25 +24281,34 @@ var LabeledRadioGroup = function LabeledRadioGroup(_ref) {
     console.log("Labels and image label classes must be the same length!");
   }
 
+  if (labels.length !== values.length) {
+    console.log("Labels and value arrays must be the same length!");
+  }
+
   var handleChange = function handleChange(newVal) {
     onChange(newVal);
   };
 
   var buttons = [];
   for (var i = 0; i < labels.length; i++) {
-    var label = labels[i],
+    var value = values[i],
+        label = labels[i],
         labelImageClass = labelImageClasses[i],
         labelImageDiv = labelImageClass ? _react2.default.createElement('div', { className: "radio-image " + labelImageClass }) : null;
     buttons.push(_react2.default.createElement(
       'div',
       { className: 'radio-option', key: i },
       labelImageDiv,
-      _react2.default.createElement('div', { className: "radio-button" + (selected === label ? " selected" : ""),
-        onClick: handleChange.bind(undefined, label) }),
+      _react2.default.createElement('div', { className: "radio-button" + (selected === value ? " selected" : ""),
+        onClick: handleChange.bind(undefined, value) }),
       _react2.default.createElement(
         'div',
-        { className: 'radio-label' },
-        label
+        { className: 'radio-label-container' },
+        _react2.default.createElement(
+          'div',
+          { className: 'radio-label' },
+          label
+        )
       )
     ));
   }
@@ -24303,6 +24323,7 @@ var LabeledRadioGroup = function LabeledRadioGroup(_ref) {
 LabeledRadioGroup.propTypes = {
   className: _react.PropTypes.string,
   labels: _react.PropTypes.arrayOf(_react.PropTypes.string),
+  values: _react.PropTypes.arrayOf(_react.PropTypes.string),
   labelImageClasses: _react.PropTypes.arrayOf(_react.PropTypes.string),
   selected: _react.PropTypes.string,
   onChange: _react.PropTypes.func
