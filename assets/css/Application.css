@@ -15,6 +15,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+.column.right {
+  margin-left: -70px;
+}
 .sliders {
   display: flex;
   flex-direction: row;

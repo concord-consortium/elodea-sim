@@ -39,7 +39,7 @@ const minCO2 = 0,
                                  setOfCasesWithArticle: "a sample"
                                },
                                attrs: [
-                                {name: "color", type: 'categorical', colormap: {"white": "gray", "red": "red", "green": "green", "blue": "blue"}},
+                                {name: "color", type: 'categorical', colormap: {"Full Spectrum": "gray", "Red": "red", "Green": "green", "Blue": "blue"}},
                                 {name: "CO2", unit: "ppm", type: 'numeric', precision: 2},
                                 {name: "intensity", unit: "lux", type: 'numeric', precision: 2},
                                 {name: "bubbles", type: 'numeric', precision: 1},
@@ -226,8 +226,8 @@ class Application extends React.Component {
                                values={Object.keys(animationTimes)}
                                selected={this.state.speed} />
           </div>
-          <Button className="start" onClick={handleSubmit} disabled={this.state.doBubble} label="Start"/>
-          <Button className="new-exp" onClick={handleIncExperiment} label="+"/>
+          <Button className="start" onClick={handleSubmit} disabled={this.state.doBubble} label="Count Bubbles"/>
+          <Button className="new-exp" onClick={handleIncExperiment} label="New Experiment"/>
         </div>
       </div>
     );

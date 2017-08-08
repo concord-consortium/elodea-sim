@@ -1,7 +1,7 @@
 .button-image {
   height: 40px;
-  width: 124px;
-  background-image: url("../button-unpushed.png");
+  width: 212px;
+  background-image: url("../button-unpushed-long.png");
   background-size: contain;
   background-repeat: no-repeat;
 
@@ -16,7 +16,7 @@
 }
 
 .button-image:active:not(.disabled) {
-  background-image: url("../button-pushed.png");
+  background-image: url("../button-pushed-long.png");
 }
 
 .button-text {
