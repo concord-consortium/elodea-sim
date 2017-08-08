@@ -23443,7 +23443,7 @@ var Application = function (_React$Component) {
         return codapInterface.sendRequest({
           action: 'notify',
           resource: 'logMessage',
-          values: { formatStr: formatStr, replaceArgs: replaceArgs }
+          values: { formatStr: "foobar" }
         });
       };
 
