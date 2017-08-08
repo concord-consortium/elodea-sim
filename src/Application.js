@@ -12,7 +12,12 @@ const minCO2 = 0,
       maxCO2 = 10,
       minIntensity = 0,
       maxIntensity = 10,
-      colorMultipliers = {colorless: 1.5, red: .5, green: 0, blue: 1},
+      colorMultipliers = { 
+                           white: {multiplier: 1.5, label: "Full Spectrum"},
+                           red: {multiplier: .5, label: "Red"},
+                           green: {multiplier: 0, label: "Green"},
+                           blue: {multiplier: 1, label: "Blue"}
+                         },
       animationTimes = {x1: 2000, x5: 500},
 
       kDataSetName = 'Bubbles',
@@ -34,7 +39,7 @@ const minCO2 = 0,
                                  setOfCasesWithArticle: "a sample"
                                },
                                attrs: [
-                                {name: "color", type: 'categorical', colormap: {"colorless": "gray", "red": "red", "green": "green", "blue": "blue"}},
+                                {name: "color", type: 'categorical', colormap: {"white": "gray", "red": "red", "green": "green", "blue": "blue"}},
                                 {name: "CO2", unit: "ppm", type: 'numeric', precision: 2},
                                 {name: "intensity", unit: "lux", type: 'numeric', precision: 2},
                                 {name: "bubbles", type: 'numeric', precision: 1},
@@ -51,7 +56,7 @@ class Application extends React.Component {
     this.state = {
       co2: (maxCO2 - minCO2)/2,
       intensity: (maxIntensity - minIntensity)/2,
-      color: "colorless",
+      color: "white",
       bubbles: null,
       doBubble: false,
       speed: "x1",
@@ -76,7 +81,7 @@ class Application extends React.Component {
     codapInterface.init({
       name: kDataSetName,
       title: kAppName,
-      dimensions: {width: 850, height: 540},
+      dimensions: {width: 870, height: 540},
       version: '0.1'
     }).then(function (iResult) {
       // get interactive state so we can save the sample set index.
@@ -158,7 +163,7 @@ class Application extends React.Component {
     }
 
     let handleSubmit = () => {
-      let colorMultiplier = colorMultipliers[this.state.color],
+      let colorMultiplier = colorMultipliers[this.state.color].multiplier,
           maxRate = this.state.co2,
           rate = Math.min(maxRate, this.state.intensity * colorMultiplier),
           baseBubbles = Math.round(rate * 10),
@@ -173,7 +178,7 @@ class Application extends React.Component {
 
 
       let _this = this,
-          startColor = this.state.color,
+          startColor = colorMultipliers[this.state.color].label,
           startCO2 = this.state.co2,
           startIntensity = this.state.intensity,
           startSpeed = this.state.speed,
@@ -194,8 +199,9 @@ class Application extends React.Component {
       <div className="application-container">
         <div className="column left">
           <LabeledRadioGroup className="bulbs"
-                             labels={Object.keys(colorMultipliers)} 
+                             labels={Object.keys(colorMultipliers).map(key => colorMultipliers[key].label)} 
                              labelImageClasses={Object.keys(colorMultipliers).map(key => "bulb " + key)}
+                             values={Object.keys(colorMultipliers)}
                              onChange={handleColorChange}
                              selected={this.state.color} />
           <div className="sliders">
@@ -217,6 +223,7 @@ class Application extends React.Component {
             <LabeledRadioGroup className="speed"
                                labels={Object.keys(animationTimes)} 
                                onChange={handleSpeedChange}
+                               values={Object.keys(animationTimes)}
                                selected={this.state.speed} />
           </div>
           <Button className="start" onClick={handleSubmit} disabled={this.state.doBubble} label="Start"/>

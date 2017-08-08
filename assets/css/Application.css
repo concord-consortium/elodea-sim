@@ -23,15 +23,27 @@ body {
 }
 
 .radio-group.bulbs {
-  height: 135px;
+  height: 151px;
+  margin-top: -10px;
 }
+.bulbs .radio-option {
+  width: 118px;
+  margin-left: 5px;
+}
+.bulbs .radio-label-container {
+  margin-top: 3px;
+}
+.bulbs .radio-button {
+  margin-top: 3px;
+}
+
 .bulb {
   width: 62px;
   height: 69px;
   background-size: contain;
   background-repeat: no-repeat;
 }
-.bulb.colorless {
+.bulb.white {
   background-image: url("../bulb-white.png");
 }
 .bulb.red {

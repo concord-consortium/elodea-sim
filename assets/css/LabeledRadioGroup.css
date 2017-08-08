@@ -6,7 +6,6 @@
 .radio-option {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
 }
 
@@ -23,5 +22,5 @@
 }
 
 .radio-label {
-  text-transform: capitalize;
+  text-align: center;
 }
