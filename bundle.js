@@ -23296,13 +23296,13 @@ __webpack_require__(201);
 __webpack_require__(202);
 
 var minCO2 = 0,
-    maxCO2 = 10,
+    maxCO2 = 100,
     minIntensity = 0,
-    maxIntensity = 10,
+    maxIntensity = 100,
     colorMultipliers = {
   white: { multiplier: 1.5, label: "Full Spectrum" },
   red: { multiplier: .5, label: "Red" },
-  green: { multiplier: 0, label: "Green" },
+  green: { multiplier: .05, label: "Green" },
   blue: { multiplier: 1, label: "Blue" }
 },
     animationTimes = { x1: 2000, x5: 500 },
@@ -23320,7 +23320,7 @@ var minCO2 = 0,
       pluralCase: "bubbles",
       setOfCasesWithArticle: "a sample"
     },
-    attrs: [{ name: "color", type: 'categorical', colormap: { "Full Spectrum": "gray", "Red": "red", "Green": "green", "Blue": "blue" } }, { name: "CO2", unit: "ppm", type: 'numeric', precision: 2 }, { name: "intensity", unit: "lux", type: 'numeric', precision: 2 }, { name: "bubbles", type: 'numeric', precision: 1 }]
+    attrs: [{ name: "color", type: 'categorical', colormap: { "Full Spectrum": "gray", "Red": "red", "Green": "green", "Blue": "blue" } }, { name: "CO2", unit: "%", type: 'numeric', precision: 2 }, { name: "intensity", unit: "%", type: 'numeric', precision: 2 }, { name: "bubbles", type: 'numeric', precision: 1 }]
   }]
 };
 
@@ -23451,11 +23451,14 @@ var Application = function (_React$Component) {
         var colorMultiplier = colorMultipliers[_this3.state.color].multiplier,
             maxRate = _this3.state.co2,
             rate = Math.min(maxRate, _this3.state.intensity * colorMultiplier),
-            baseBubbles = Math.round(rate * 10),
+            baseBubbles = Math.round(rate),
 
         // Add between -10% and 10% noise
         noisePercent = Math.random() * .2 - .1,
-            bubbles = Math.round(baseBubbles + baseBubbles * noisePercent);
+
+        // Subtract a bubble at random to add noise to small numbers
+        staticNoise = Math.random() - 1,
+            bubbles = Math.max(0, Math.round(baseBubbles + baseBubbles * noisePercent + staticNoise));
 
         _this3.setState({ doBubble: true });
         var sound = new Audio("assets/bubbles.mp3");
@@ -23471,7 +23474,7 @@ var Application = function (_React$Component) {
           _this.setState({ doBubble: false });
           _this.setState({ bubbles: bubbles });
           sendItems(kDataSetName, { experiment_number: startExperiment, bubbles: bubbles, color: startColor, CO2: startCO2, intensity: startIntensity });
-          sendLog("Ran experiment with %@ light, %@ lux, %@ CO2 at %@ speed for a total of %@ bubbles", [startColor, startIntensity, startCO2, startSpeed, bubbles]);
+          sendLog("Ran experiment with %@ light, %@ % lux, %@ % CO2 at %@ speed for a total of %@ bubbles", [startColor, startIntensity, startCO2, startSpeed, bubbles]);
           guaranteeCaseTable();
           sound.pause();
         }, animationTimes[_this3.state.speed]);
@@ -23486,7 +23489,7 @@ var Application = function (_React$Component) {
           null,
           '2'
         ),
-        ' Level (ppm)'
+        ' Level (%)'
       );
       return _react2.default.createElement(
         'div',
@@ -23510,7 +23513,7 @@ var Application = function (_React$Component) {
             _react2.default.createElement(_LabeledSlider2.default, { value: this.state.intensity, onUpdateSlider: handleIntensitySlider, label: _react2.default.createElement(
                 'div',
                 null,
-                'Light Level (lux)'
+                'Light Level (%)'
               ),
               labelImageClass: 'lux-bulb', maxValue: maxIntensity }),
             _react2.default.createElement(_LabeledSlider2.default, { value: this.state.co2, onUpdateSlider: handleCO2Slider, label: co2Label,
@@ -24100,7 +24103,7 @@ var LabeledSlider = function LabeledSlider(_ref) {
   };
 
   var numberLabels = [];
-  for (var i = 10; i >= 0; i--) {
+  for (var i = 100; i >= 0; i -= 10) {
     numberLabels.push(_react2.default.createElement(
       'div',
       { key: i },
@@ -24122,10 +24125,10 @@ var LabeledSlider = function LabeledSlider(_ref) {
       _react2.default.createElement('div', { className: 'graduated-lines' }),
       _react2.default.createElement(
         _reactSlider2.default,
-        { orientation: 'vertical', invert: true, defaultValue: value, onChange: handleSlide, step: .1, max: maxValue },
+        { orientation: 'vertical', invert: true, defaultValue: value, onChange: handleSlide, step: 1, max: maxValue },
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'handle-label' },
           value
         )
       )
