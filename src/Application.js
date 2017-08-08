@@ -15,7 +15,7 @@ const minCO2 = 0,
       colorMultipliers = { 
                            white: {multiplier: 1.5, label: "Full Spectrum"},
                            red: {multiplier: .5, label: "Red"},
-                           green: {multiplier: 0, label: "Green"},
+                           green: {multiplier: .05, label: "Green"},
                            blue: {multiplier: 1, label: "Blue"}
                          },
       animationTimes = {x1: 2000, x5: 500},
@@ -169,7 +169,9 @@ class Application extends React.Component {
           baseBubbles = Math.round(rate * 10),
           // Add between -10% and 10% noise
           noisePercent = (Math.random() * .2) - .1,
-          bubbles = Math.round(baseBubbles + baseBubbles * noisePercent);
+          // Subtract a bubble at random to add noise to small numbers
+          staticNoise = (Math.random() - 1),
+          bubbles = Math.max(0, Math.round(baseBubbles + (baseBubbles * noisePercent) + staticNoise));
 
 
       this.setState({doBubble: true});
