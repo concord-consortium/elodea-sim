@@ -17,7 +17,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: absolute;
-  margin-left: -56px;
+  margin-left: -64px;
   margin-top: 12px;
   color: gray;
   font-size: .9em;
@@ -71,6 +71,9 @@
 .slider .bar {
   left: 20px;
   width: 10px;
+}
+.handle-label {
+  margin-top: -1px;
 }
 .co2-molecule {
   background-image: url("../co2-molecule.png");

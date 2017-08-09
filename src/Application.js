@@ -9,9 +9,9 @@ import Button from './Button';
 import LabeledRadioGroup from './LabeledRadioGroup';
 
 const minCO2 = 0,
-      maxCO2 = 10,
+      maxCO2 = 100,
       minIntensity = 0,
-      maxIntensity = 10,
+      maxIntensity = 100,
       colorMultipliers = { 
                            white: {multiplier: 1.5, label: "Full Spectrum"},
                            red: {multiplier: .5, label: "Red"},
@@ -40,8 +40,8 @@ const minCO2 = 0,
                                },
                                attrs: [
                                 {name: "color", type: 'categorical', colormap: {"Full Spectrum": "gray", "Red": "red", "Green": "green", "Blue": "blue"}},
-                                {name: "CO2", unit: "ppm", type: 'numeric', precision: 2},
-                                {name: "intensity", unit: "lux", type: 'numeric', precision: 2},
+                                {name: "CO2", unit: "%", type: 'numeric', precision: 2},
+                                {name: "intensity", unit: "%", type: 'numeric', precision: 2},
                                 {name: "bubbles", type: 'numeric', precision: 1},
                               ]
                             }
@@ -166,7 +166,7 @@ class Application extends React.Component {
       let colorMultiplier = colorMultipliers[this.state.color].multiplier,
           maxRate = this.state.co2,
           rate = Math.min(maxRate, this.state.intensity * colorMultiplier),
-          baseBubbles = Math.round(rate * 10),
+          baseBubbles = Math.round(rate),
           // Add between -10% and 10% noise
           noisePercent = (Math.random() * .2) - .1,
           // Subtract a bubble at random to add noise to small numbers
@@ -189,14 +189,14 @@ class Application extends React.Component {
         _this.setState({doBubble: false});
         _this.setState({bubbles});
         sendItems(kDataSetName, {experiment_number: startExperiment, bubbles, color: startColor, CO2: startCO2, intensity: startIntensity});
-        sendLog("Ran experiment with %@ light, %@ lux, %@ CO2 at %@ speed for a total of %@ bubbles",
+        sendLog("Ran experiment with %@ light, %@ % lux, %@ % CO2 at %@ speed for a total of %@ bubbles",
                 [startColor, startIntensity, startCO2, startSpeed, bubbles]);
         guaranteeCaseTable();
         sound.pause();
       }, animationTimes[this.state.speed]);
     }
 
-    let co2Label = <div>CO<sub>2</sub> Level (ppm)</div>;
+    let co2Label = <div>CO<sub>2</sub> Level (%)</div>;
     return (
       <div className="application-container">
         <div className="column left">
@@ -207,7 +207,7 @@ class Application extends React.Component {
                              onChange={handleColorChange}
                              selected={this.state.color} />
           <div className="sliders">
-            <LabeledSlider value={this.state.intensity} onUpdateSlider={handleIntensitySlider} label={<div>Light Level (lux)</div>}
+            <LabeledSlider value={this.state.intensity} onUpdateSlider={handleIntensitySlider} label={<div>Light Level (%)</div>}
                            labelImageClass="lux-bulb" maxValue={maxIntensity} />
             <LabeledSlider value={this.state.co2} onUpdateSlider={handleCO2Slider} label={co2Label} 
                            labelImageClass="co2-molecule" maxValue={maxCO2} />

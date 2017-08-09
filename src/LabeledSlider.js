@@ -9,7 +9,7 @@ const LabeledSlider = ({value, maxValue, labelImageClass, label, onUpdateSlider}
   };
 
   let numberLabels = [];
-  for (let i = 10; i >= 0; i--) {
+  for (let i = 100; i >= 0; i -= 10) {
     numberLabels.push(<div key={i}>{i}</div>);
   }
 
@@ -20,8 +20,8 @@ const LabeledSlider = ({value, maxValue, labelImageClass, label, onUpdateSlider}
           {numberLabels}
         </div>
         <div className="graduated-lines"></div>
-        <ReactSlider orientation="vertical" invert={true} defaultValue={value} onChange={handleSlide} step={.1} max={maxValue}>
-          <div>{value}</div>
+        <ReactSlider orientation="vertical" invert={true} defaultValue={value} onChange={handleSlide} step={1} max={maxValue}>
+          <div className="handle-label">{value}</div>
         </ReactSlider>
       </div>
       <div className={labelImageClass}></div>
